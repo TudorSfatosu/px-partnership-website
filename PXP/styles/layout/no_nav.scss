@@ -1,0 +1,22 @@
+﻿.header-no-nav {
+
+    padding: 40px 0;
+    border-bottom: 2px solid #5e7383;
+    /*box-shadow: 0 4px 2px -2px rgba(170,150,130,.3);*/
+
+    .logo {
+		width: 9em;
+		@include mq(sm) {
+			width: 160px;
+		}
+		@include mq(md) {
+			width: 160px;
+		}
+		@include mq(lg) {
+			width: 240px;
+		}
+		@include mq(xl) {
+			width: 280px;
+		}
+    }
+}

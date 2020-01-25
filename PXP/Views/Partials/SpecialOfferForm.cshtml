@@ -1,0 +1,64 @@
+﻿@model Models.SpecialOfferFormViewModel
+@using Recaptcha.Web.Mvc
+
+
+@using (Html.BeginUmbracoForm("SpecialOfferFormSubmit", "SpecialOfferForm"))
+{
+    <div class="pxp-form-group form-group--text">
+        @*@Html.LabelFor(m => m.Name, htmlAttributes: new { @class = "control-label" })*@
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </div>
+    <div class="pxp-form-group form-group--text">
+        @*@Html.LabelFor(m => m.Company, htmlAttributes: new { @class = "control-label" })*@
+        @Html.TextBoxFor(m => m.Company, new { @class = "form-control", @placeholder = "Company" })
+        @Html.ValidationMessageFor(m => m.Company, "", new { @class = "text-danger" })
+    </div>
+    <div class="pxp-form-group form-group--text">
+        @*@Html.LabelFor(m => m.Position, htmlAttributes: new { @class = "control-label" })*@
+        @Html.TextBoxFor(m => m.Position, new { @class = "form-control", @placeholder = "Position/Job Title" })
+        @Html.ValidationMessageFor(m => m.Position, "", new { @class = "text-danger" })
+    </div>
+    <div class="pxp-form-group form-group--text">
+        @*@Html.LabelFor(m => m.Tel, htmlAttributes: new { @class = "control-label" })*@
+        @Html.TextBoxFor(m => m.Tel, new { @class = "form-control", @placeholder = "Telephone" })
+        @Html.ValidationMessageFor(m => m.Tel, "", new { @class = "text-danger" })
+    </div>
+    <div class="pxp-form-group form-group--text">
+        @*@Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "control-label" })*@
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+    <div class="pxp-form-group form-group--textarea">
+        @*@Html.LabelFor(m => m.Message, htmlAttributes: new { @class = "control-label" })*@
+        @Html.TextAreaFor(m => m.Message, new { @class = "form-control", @rows = "4", @placeholder = "Add Message" })
+        @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+    </div>
+    <div class="pxp-form-group">
+        <div class="row d-flex justify-content-center">
+            <div class="col-10 d-flex align-items-center p-0">
+                @Html.LabelFor(m => m.Maillist, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-2 text-right p-0">
+                @*@Html.CheckBoxFor(m => m.Maillist, new { @class = "form-control form-checkbox" })*@
+                <label>
+                    <!-- Input element for the checkbox -->
+                    @*<input type="checkbox" class="check-custom">*@
+                    @Html.CheckBoxFor(m => m.Maillist, new { @class = "form-checkbox" })
+
+                    <!-- Customization element for the checkbox -->
+                    <span class="check-toggle"></span>
+                </label>
+
+            </div>
+        </div>
+        <label for="Maillist"><small class="form-text">@Model.gDPREmailMessage</small></label>
+        @Html.ValidationMessageFor(m => m.Maillist, "", new { @class = "text-danger" })
+    </div>
+    <div class="pxp-form-group">
+        @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)
+    </div>
+    <div class="text-left">
+        <button type="submit" class="btn pxp-form-btn dark-blue-grey-text">Send Enquiry</button>
+    </div>
+}

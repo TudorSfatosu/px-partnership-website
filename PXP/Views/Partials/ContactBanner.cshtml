@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ContactBanner>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	var Settings = @Umbraco.Content(1129);
+}
+
+<!-- Half banner with mask and two columns paragraph -->
+<section class="half-banner-mask white-text">
+	<div class="container breadcrumbs-container d-none d-lg-block">
+		<div class="top breadcrumbs">
+			<a hreflang="en-gb" rel="canonical" href="@Model.Content.Parent.Url">@Model.Content.Parent.Name</a>
+			<span>&nbsp;>&nbsp;</span>
+			<span class="active">@Model.Content.Name</span>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row grey-bg">
+			<div class="col-sm-5 my-auto banner-text-container banner-text-container--outer banner-list-container order-2 order-sm-1">
+				<div class="banner-text-container banner-text-container--inner banner-list-container">
+					<h1 class="banner-heading text-center">@Model.Content.Title</h1>
+					<div class="mustard-hr d-block d-sm-none"></div>
+					<ul class="banner-list">
+						<li>@Settings.AddressPlace</li>
+						<li>@Settings.AddressStreet</li>
+						<li>@Settings.AddressCity</li>
+						<li>@Settings.AddressPostcode</li>
+						<li>T: @Settings.ContactTel</li>
+						@if (@Settings.ContactFax != "")
+						{
+							<li>F: @Settings.ContactFax</li>
+						}
+						<li>E: <a hreflang="en-gb" rel="canonical" href="mailto:@Settings.ContactEmail" class="white-text white-text-hover dark-blue-grey-xs-text">@Settings.ContactEmail</a></li>
+						<li>&nbsp;</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-sm-7 image order-1 order-sm-2"
+				 style="background-image: url('/images/masks/light-grey-mask.png'), url('@Model.Content.Image.Url')">
+			</div>
+		</div>
+	</div>
+</section>
+<!-- / Half banner with mask and two columns paragraph -->

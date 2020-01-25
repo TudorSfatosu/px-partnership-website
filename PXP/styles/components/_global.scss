@@ -1,0 +1,38 @@
+.container {
+  margin: 0;
+  max-width: 100%;
+  @include mq(sm) {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 720px;
+  }
+  @include mq(md) {
+    max-width: 960px;
+  }
+  @include mq(lg) {
+    max-width: 1110px;
+  }
+
+  @include mq(xl) {
+    max-width: 1410px;
+  }
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.content {
+  justify-content: left;
+  @include mq(sm) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

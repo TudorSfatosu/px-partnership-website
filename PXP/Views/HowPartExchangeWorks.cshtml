@@ -1,0 +1,167 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HowPartExchangeWorks>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+@{
+	Layout = "Master.cshtml";
+	var stepsArray = new string[7]; ;
+}
+
+@Html.Partial("Banner", new Banner(Model.Content))
+
+<!-- Exchange Work Steps -->
+<section class="exchange-work-steps container">
+	<!-- Intro Text -->
+	<div class="row intro-row">
+		<div class="col-12 text-center intro-text article-dark-grey-text">
+			@Model.Content.IntroductionCopy
+		</div>
+	</div>
+
+	@if (Model.Content.Steps.Any())
+	{
+		var index = 0;
+		foreach (var steps in @Model.Content.Steps)
+		{
+			var step = new StepsNested(steps);
+			stepsArray[index] = step.Copy.ToString();
+			index++;
+		}
+	}
+	
+	
+
+	<!-- Row -->
+	<div class="row">
+		<!-- Step 1 -- Half Width Step -->
+		<div class="col-12 col-lg-6 steps-column white-bg-step">
+			<div class="step-box step-match">
+				<div class="step">Step</div>
+				<div class="number">1</div>
+			</div>
+			<div class="step-description step-match">
+				<div class="step-text">
+					@Html.Raw(@stepsArray[0])
+				</div>
+				<div class="step-icon step-icon-1 step-image d-none d-lg-block"></div>
+			</div>
+		</div>
+		<!-- / Step 1 -- Half Width Step -->
+		<!-- Step 2 -- Half Width Step -->
+		<div class="col-12 col-lg-6 steps-column green-bg-step">
+			<div class="step-box step-box--right step-match">
+				<div class="step white-text">Step</div>
+				<div class="number white-text">2</div>
+			</div>
+			<div class="step-description step-match">
+				<div class="step-text">
+					@Html.Raw(@stepsArray[1])
+				</div>
+				<div class="step-icon step-icon-2 step-image d-none d-lg-block"></div>
+			</div>
+		</div>
+		<!-- / Step 2 -- Half Width Step -->
+	</div>
+	<!-- / Row -->
+	<!--  Arrow Down -->
+	<div class="arrow-down-container d-none d-lg-flex">
+		<img class="step-image" src="/images/box-images/steps-arrow-down.jpg" alt="arrow down" />
+	</div>
+	<!-- / Arrow Down -->
+	<!-- Row -->
+	<div class="row">
+		<!-- Step 3 -- Half Width Step -->
+		<div class="col-12 col-lg-6 steps-column xs-white-lg-green-bg-step">
+			<div class="step-box step-match">
+				<div class="step">Step</div>
+				<div class="number">3</div>
+			</div>
+			<div class="step-description step-match">
+				<div class="step-text">
+					@Html.Raw(@stepsArray[2])
+				</div>
+				<div class="step-icon step-icon-3 step-image d-none d-lg-block"></div>
+
+			</div>
+		</div>
+		<!-- / Step 3 -- Half Width Step -->
+		<!-- Step 4 -- Half Width Step -->
+		<div class="col-12 col-lg-6 steps-column xs-green-lg-white-bg-step">
+			<div class="step-box step-box--right step-match">
+				<div class="step">Step</div>
+				<div class="number">4</div>
+			</div>
+			<div class="step-description step-match">
+				<div class="step-text">
+					@Html.Raw(@stepsArray[3])
+				</div>
+				<div class="step-icon step-icon-4 step-image d-none d-lg-block"></div>
+			</div>
+		</div>
+		<!-- / Step 4 -- Half Width Step -->
+	</div>
+	<!-- / Row -->
+	<!--  Arrow Down -->
+	<div class="arrow-down-container d-none d-lg-flex">
+		<img class="step-image" src="/images/box-images/steps-arrow-down.jpg" alt="arrow down"/>
+	</div>
+	<!-- / Arrow Down -->
+	<!-- Row -->
+	<div class="row full-width-row">
+		<!-- Step 5 -- Half Width Step -->
+		<div class="col-12 steps-column white-bg-step">
+			<div class="step-box step-match">
+				<div class="step">Step</div>
+				<div class="number">5</div>
+			</div>
+			<div class="step-description step-match">
+				<div class="step-text">
+					@Html.Raw(@stepsArray[4])
+				</div>
+				<div class="step-icon step-icon-5 step-image d-none d-lg-block"></div>
+
+			</div>
+		</div>
+		<!-- / Step 5 -- Half Width Step -->
+	</div>
+	<!-- / Row -->
+	<!--  Arrow Down -->
+	<div class="arrow-down-container d-none d-lg-flex">
+		<img class="step-image" src="/images/box-images/steps-arrow-down.jpg" alt="arrow down" />
+	</div>
+	<!-- / Arrow Down -->
+	<!-- Row -->
+	<div class="row">
+		<!-- Step 6 -- Half Width Step -->
+		<div class="col-12 col-lg-6 steps-column xs-green-lg-white-bg-step">
+			<div class="step-box step-match">
+				<div class="step">Step</div>
+				<div class="number">6</div>
+			</div>
+			<div class="step-description step-match">
+				<div class="step-text">
+					@Html.Raw(@stepsArray[5])
+				</div>
+				<div class="step-icon step-icon-6 step-image d-none d-lg-block"></div>
+			</div>
+		</div>
+		<!-- / Step 6 -- Half Width Step -->
+		<!-- Step 7 -- Half Width Step -->
+		<div class="col-12 col-lg-6 steps-column xs-white-lg-green-bg-step">
+			<div class="step-box step-match">
+				<div class="step white-text">Step</div>
+				<div class="number white-text">7</div>
+			</div>
+			<div class="step-description step-match">
+				<div class="step-text step-box--right step-match">
+					@Html.Raw(@stepsArray[6])
+				</div>
+				<div class="step-icon step-icon-7 step-image d-none d-lg-block"></div>
+			</div>
+		</div>
+		<!-- / Step 7 -- Half Width Step -->
+	</div>
+	<!-- / Row -->
+
+
+</section>
+<!-- Exchange Work Steps -->

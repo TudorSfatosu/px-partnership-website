@@ -1,0 +1,208 @@
+body {
+	font-family: "museo-sans", sans-serif, sans;
+}
+
+.nav-item,
+p,
+.horiz-card-text,
+.section-text,
+.builders-list,
+.qa-answer {
+	font-weight: 300;
+}
+
+.footer-phone,
+.footer-contact-text,
+.banner-text,
+.card-heading--publish-date,
+.horiz-card-text,
+.banner-list,
+.article-image-half-text p,
+.article-image-half h3,
+.step-title,
+.footer-nav-text,
+.footer-nav-text a,
+.intro-text,
+.nav-upper-text {
+	font-weight: 500;
+}
+
+.nav-item,
+.navbar-head,
+h1,
+.section-heading,
+.card-heading,
+.card-info,
+.card-text,
+.horiz-card-heading,
+.small-px-btn,
+.section-header,
+.section-button,
+
+.banner-heading,
+.banner-caption,
+.find-out,
+.card-title,
+.large-px-btn,
+.qa-title,
+.marketing-gallery-title,
+.article-images-title,
+.form-label,
+.pxp-form-btn {
+	font-weight: 700;
+}
+
+.footer-nav-heading,
+.horiz-card-text h2,
+.breadcrumbs,
+h2.footer-heading,
+.footer-heading {
+	font-weight: 900;
+}
+
+.breadcrumbs,
+.breadcrumbs a,
+.footer-copyright,
+.footer-copyright a {
+	@include spread-value(font-size, 11px, 12px);
+}
+
+.nav-upper-text {
+	@include spread-value(font-size, 11px, 14px);
+}
+
+.footer-nav-text,
+.footer-nav-text a {
+	@include spread-value(font-size, 13px, 14px);
+}
+
+.horiz-card-text,
+.pxp-form-btn {
+	@include spread-value(font-size, 14px, 15px);
+}
+
+.footer-nav-heading,
+.card-heading--publish-date,
+a.small-px-btn,
+.article-image-half h3 {
+	@include spread-value(font-size, 15px, 16px);
+}
+
+.nav-item {
+	display: flex;
+	align-self: center;
+}
+
+.nav-item,
+.navbar-head,
+.footer-contact-text {
+	@include spread-value(font-size, 15px, 17px);
+}
+
+.px-btn,
+.card-text,
+.section-text,
+.banner-text,
+p,
+a,
+.step-title {
+	font-size: 15px;
+	@include mq(sm) {
+		font-size: 15px;
+	}
+	@include mq(md) {
+		font-size: 16px;
+	}
+	@include mq(lg) {
+		font-size: 14px;
+	}
+	@include mq(xl) {
+		font-size: 17px;
+	}
+}
+
+.qa-answer {
+	@include spread-value(font-size, 14px, 18px);
+
+	@media (min-width: 1200px) and (max-width: 1600px) {
+		font-size: 15px;
+	}
+}
+
+.card-info {
+	@include spread-value(font-size, 15px, 19px);
+}
+
+.section-button,
+.builders-list,
+.large-px-btn,
+.banner-list,
+.intro-text,
+.form-label {
+	@include spread-value(font-size, 16px, 20px);
+}
+
+.card-title {
+	@include spread-value(font-size, 19px, 23px);
+}
+
+h1,
+.footer-phone,
+.marketing-gallery-title,
+.article-images-title {
+	@include spread-value(font-size, 18px, 24px);
+}
+
+.qa-title {
+	@include spread-value(font-size, 15px, 24px);
+
+	@media (min-width: 1200px) and (max-width: 1600px) {
+		font-size: 20px;
+	}
+}
+
+.section-header {
+	@include spread-value(font-size, 18px, 25px);
+}
+
+.footer-heading {
+	@include spread-value(font-size, 22px, 28px);
+}
+
+.card-heading {
+	@include spread-value(font-size, 24px, 31px);
+}
+
+.find-out {
+	@include spread-value(font-size, 21px, 32px);
+}
+
+.horiz-card-heading {
+	@include spread-value(font-size, 23px, 34px);
+}
+
+.section-heading {
+	@include spread-value(font-size, 22px, 37px);
+}
+
+.banner-caption {
+	@include spread-value(font-size, 23px, 50px);
+}
+
+.banner-heading {
+	@include spread-value(font-size, 23px, 60px);
+}
+
+.card-heading,
+.card-title,
+.horiz-card-heading,
+.banner-caption,
+.banner-heading,
+.article-images-title {
+	text-transform: uppercase;
+}
+
+.small-px-btn,
+.breadcrumbs {
+	text-transform: capitalize;
+}

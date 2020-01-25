@@ -1,0 +1,121 @@
+.qa-box-container {
+  padding-top: 2em;
+  @include mq(sm) {
+    padding-top: 3em;
+  }
+  @include mq(md) {
+    padding-top: 4em;
+  }
+  @include mq(lg) {
+    padding-top: 5em;
+  }
+  @include mq(xl) {
+    padding-top: 6em;
+  }
+  .qa-col {
+    padding: .5em 0;
+    @include mq(sm) {
+      padding: .5em .5em;
+    }
+    @include mq(md) {
+      padding: 1em .5em;
+    }
+    @include mq(lg) {
+      padding: 1em .5em 2em .5em;
+    }
+  }
+  .qa-col:last-child {
+    margin-bottom: 1em;
+    @include mq(md) {
+      margin-bottom: 2em;
+    }
+    @include mq(lg) {
+      margin-bottom: 3em;
+    }
+    @include mq(xl) {
+      margin-bottom: 4em;
+    }
+  }
+  .qa-col:first-child:nth-last-child(3n+1) ~ .qa-col:last-child {
+    @include mq(md) {
+      left: 25%;
+    }
+    @include mq(xl) {
+      left: 33.333333%;
+    }
+  }
+  .container-fluid {
+    width: 88%;
+    left: 6%;
+  }
+  .qa-box-row {
+    min-height: 0;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    @include mq(md) {
+      min-height: 6em;
+      padding-top: 1em;
+      padding-bottom: 1em;
+    }
+    @include mq(lg) {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    display: flex;
+    align-items: center;
+  }
+  .qa-box--green {
+    border: 2px solid $light-green;
+    @include mq(sm) {
+      border: 3px solid $light-green;
+
+    }
+  }
+
+  .qa-box--grey {
+    border: 2px solid $mid-grey;
+    @include mq(sm) {
+      border: 3px solid $mid-grey;
+    }
+  }
+  h4 {
+    margin-bottom: 0;
+  }
+  .qa-icon {
+    margin-left: .5em;
+    margin-right: 1em;
+    @include mq(lg) {
+      margin-left: 1.5em;
+      margin-right: 2em;
+    }
+    &.icon-question,
+    &.icon-answer {
+      width: 2em;
+      height: 2em;
+      @include mq(sm) {
+        width: 2.5em;
+        height: 2.5em;
+      }
+    }
+    display: flex;
+    align-self: center;
+  }
+  .qa-title {
+    width: 72%;
+  }
+  .qa-answer {
+    line-height: 25px;
+    @include mq(sm) {
+      width: 73%;
+    }
+    @include mq(lg) {
+      width: 77%;
+    }
+  }
+  .second-row {
+    min-height: 0;
+    @include mq(sm) {
+      min-height: 7em;
+    }
+  }
+}

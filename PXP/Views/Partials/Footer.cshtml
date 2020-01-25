@@ -1,0 +1,135 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	var Settings = @Umbraco.Content(1129);
+}
+
+<!-- footer -->
+<footer class="">
+	<!-- Upper footer -->
+	<div class="mustard-bg upper-footer fold white-fold--top fold--small fold--top fold--footer">
+		<div class="container">
+			<div class="row p-0">
+				<h2 class="footer-heading mid-blue-grey-text">Contact us now:</h2>
+			</div>
+		</div>
+	</div>
+	<!-- Mid footer -->
+	<div class="mustard-bg middle-footer">
+		<div class="container">
+			<div class="row ">
+				<div class="col-12 col-sm-4 footer-column">
+					<img class="footer-icon icon-for-large-text align-middle footer-col-el" alt="icon with phone ringing" src="/images/icons/icon-ringing.png" />
+					<a hreflang="en-gb" rel="canonical" href="tel:@Settings.ContactTel" class="footer-phone dark-blue-grey-text dark-blue-grey-text-hover footer-col-el">
+						@Settings.ContactTel
+					</a>
+				</div>
+				<div class="col-12 col-sm-4 footer-column">
+					<img class="footer-icon icon-for-small-text align-middle footer-col-el" alt="icon with an envelope" src="/images/icons/icon-mail.png" />
+					<a hreflang="en-gb" rel="canonical" href="mailto:@Settings.ContactEmail" class="footer-contact-text dark-blue-grey-text dark-blue-grey-text-hover footer-col-el">
+						@Settings.ContactEmail
+					</a>
+				</div>
+				<div class="col-12 col-sm-4 footer-column">
+					<img class="footer-icon icon-for-small-text align-middle footer-col-el"
+						 src="/images/icons/icon-brochure-reg.png" alt="brochure icon" />
+					<a hreflang="en-gb" rel="canonical" href="@Settings.ThirdFooterNavigation.Url" class="footer-contact-text dark-blue-grey-text dark-blue-grey-text-hover footer-col-el">
+						Register for a brochure
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Lower footer -->
+	<div class="dark-blue-grey-bg middle-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-sm-4 white-text">
+					<h2 class="footer-nav-heading">
+						Contact Us
+					</h2>
+					<ul class="footer-nav-text">
+						<li><a class="white-text white-text-hover" hreflang="en-gb" rel="canonical" href="tel:+44163537844">+44 @Settings.ContactTel</a></li>
+						<li>
+							<a class="white-text white-text-hover" hreflang="en-gb" rel="canonical" href="mailto:info@px-partnership.co.uk">@Settings.ContactEmail</a>
+						</li>
+						<li>
+							<a target="_blank" class="white-text white-text-hover" hreflang="en-gb" rel="canonical" href="@Settings.LoginLocation">
+								Login
+							</a>
+						</li>
+						@foreach (var secondNavigation in @Settings.SecondFooterNavigation)
+						{
+							<li>
+								<a class="white-text white-text-hover" hreflang="en-gb" rel="canonical" href="@secondNavigation.Url">
+									@secondNavigation.Name
+								</a>
+							</li>
+						}
+					</ul>
+				</div>
+				<div class="col-12 col-sm-4 white-text">
+					<h2 class="footer-nav-heading">
+						Information
+					</h2>
+					<ul class="footer-nav-text">
+						@foreach (var navigation in @Settings.FooterNavigation)
+						{
+							<li>
+								<a class="white-text white-text-hover" hreflang="en-gb" rel="canonical" href="@navigation.Url">
+									@navigation.Name
+								</a>
+							</li>
+						}
+
+						@if (!string.IsNullOrWhiteSpace(Settings.slaveryDocument))  
+						{
+							<li>
+								<a class="white-text white-text-hover" hreflang="en-gb" rel="canonical" href="@Settings.slaveryDocument" target="_blank">
+									Modern Slavery Statement
+								</a>
+							</li>
+						}
+					</ul>
+				</div>
+				<div class="col-12 col-sm-3 footer-logo-cont d-none d-xl-flex">
+					<img id="footer-logo" class="" src="@Settings.InvertedCompanyLogo.Url" alt="@Path.GetFileNameWithoutExtension(Settings.InvertedCompanyLogo.Url).Replace("-", " ")" />
+				</div>
+				<div class="col-12 col-sm-1 footer-logo-cont">
+					<a target="_blank" class="member-logo-link" href="https://www.hbf.co.uk/">
+						<img class="footer-logo" src="~/images/logos/HBF-logo.svg" alt="Home Builders Federation Logo" />
+					</a>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Copyright -->
+	<div class="container-fluid footer-copyright-container">
+		<div class="container footer-copyright">
+			<div class="row">
+				<div class="col-12 col-sm-6">
+					<div class="text-sm-left py-3">
+						<a hreflang="en-gb" rel="canonical" href="http://boomerangcreative.agency/" target="_blank"
+						   class="light-blue-grey-text light-blue-grey-text-hover">
+							Website
+							design
+						</a> by
+						<a href="http://boomerangcreative.agency/" target="_blank"
+						   class="light-blue-grey-text light-blue-grey-text-hover">Boomerang Creative</a>
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="text-sm-right py-3">
+						<a hreflang="en-gb" rel="canonical" href="http://boomerangcreative.agency/" target="_blank"
+						   class="light-blue-grey-text light-blue-grey-text-hover"></a>
+						&copy;
+						<script>new Date().getFullYear() > 2017 && document.write(new Date().getFullYear());</script>
+						, PX Partnership.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Copyright -->
+</footer>
+<!-- footer -->

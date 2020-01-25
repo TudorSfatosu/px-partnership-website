@@ -1,0 +1,8 @@
+.vs
+/App_Data
+/PXP/.idea
+/obj
+/PXP/Web.config
+/PXP/Web.Debug.config
+/PXP/Web.Release.config
+

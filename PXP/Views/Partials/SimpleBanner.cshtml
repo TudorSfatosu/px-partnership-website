@@ -1,0 +1,28 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.BannerSimple>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+<!-- Half banner without mask -->
+<section class="half-banner-mask no-mask white-text">
+	<div class="container breadcrumbs-container d-none d-lg-block">
+		<div class="top breadcrumbs">
+			<a hreflang="en-gb" rel="canonical" href="@Model.Content.Parent.Url">@Model.Content.Parent.Name</a>
+			<span>&nbsp;>&nbsp;</span>
+			<span class="active">@Model.Content.Name</span>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row grey-bg">
+			<div class="col-sm-5 my-auto banner-text-container banner-text-container--outer order-2 order-sm-1">
+				<div class="banner-text-container banner-text-container--inner">
+					<h1 class="banner-heading text-center">@Model.Content.BannerTitle</h1>
+					<div class="mustard-hr d-block d-sm-none"></div>
+				</div>
+			</div>
+			<div class="col-sm-7 image order-1 order-sm-2"
+				 style="background-image: url('@Model.Content.BannerImage.Url')">
+
+			</div>
+		</div>
+	</div>
+</section>
+<!-- / Half banner without mask -->

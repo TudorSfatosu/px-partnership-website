@@ -1,0 +1,45 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ChainBreaking>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+
+@Html.Partial("Banner", new Banner(Model.Content))
+
+
+<!-- Article -->
+<section class="article container">
+	@if (@Model.Content.IntroductoryText.ToString() != "")
+	{
+		<div class="row">
+			<div class="col-12 text-center article-dark-grey-text intro-text">
+				<p>
+					@Model.Content.IntroductoryText
+				</p>
+			</div>
+		</div>
+	}
+	<div class="row">
+		<div class="col-sm-6 order-2 order-sm-1">
+			<div class="article-text article-dark-grey-text">
+				@Model.Content.Copy
+			</div>
+		</div>
+		<div class="col-sm-6 text-center order-1 order-sm-2">
+			<img src="@Model.Content.Image.Url"
+				 class="article-image" alt="@Path.GetFileNameWithoutExtension(Model.Content.Image.Url).Replace("-", " ")">
+		</div>
+	</div>
+</section>
+<!-- / Article -->
+
+@if (Model.Content.Panel.Any())
+{
+	foreach (var panels in @Model.Content.Panel)
+	{
+		@Html.Partial("HorizontalBox", new HorizontalBox(panels));
+	}
+}

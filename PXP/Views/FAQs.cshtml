@@ -1,0 +1,70 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.FAqs>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+@Html.Partial("Banner", new Banner(Model.Content))
+
+<!-- QA Box -->
+<section class="qa-box-container">
+	<div class="container-fluid">
+		<div class="row qa-row">
+			@if (Model.Content.QuestionsAndAnswers.Any())
+			{
+				var count = 0;
+				foreach (var questions in @Model.Content.QuestionsAndAnswers)
+				{
+					count++;
+					var question = new QAS(questions);
+					if (count % 2 == 1)
+					{
+						<!-- Green box -->
+						<div class="col-12 col-md-6 col-xl-4 qa-col">
+							<div class="qa-box qa-box--green">
+								<div class="qa-box-row first-row light-green-bg">
+									<img class="qa-icon icon-question" src="/images/icons/icon-question.png" alt="question icon">
+									<h4 class="qa-title article-dark-grey-text">@question.Question</h4>
+								</div>
+								<div class="qa-box-row second-row">
+									<img class="qa-icon icon-answer" src="/images/icons/icon-answer.png" alt="answer icon">
+									<div class="qa-answer article-dark-grey-text">@question.Answer</div>
+								</div>
+							</div>
+						</div>
+						<!-- / Green box -->
+					}
+					else
+					{
+						<!-- Grey box -->
+						<div class="col-12 col-md-6 col-xl-4 qa-col">
+							<div class="qa-box qa-box--grey">
+								<div class="qa-box-row first-row mid-grey-bg">
+									<img class="qa-icon icon-question" src="/images/icons/icon-question.png" alt="question icon">
+									<h4 class="qa-title article-dark-grey-text">@question.Question</h4>
+								</div>
+								<div class="qa-box-row second-row">
+									<img class="qa-icon icon-answer" src="/images/icons/icon-answer.png" alt="answer icon">
+									<div class="qa-answer article-dark-grey-text">@question.Answer</div>
+								</div>
+							</div>
+						</div>
+						<!-- / Grey box -->
+					}
+				}
+			}
+
+		</div>
+	</div>
+</section>
+<!-- / QA Box -->
+
+@if (Model.Content.Panel.Any())
+{
+	foreach (var panels in @Model.Content.Panel)
+	{
+		@Html.Partial("HorizontalBox", new HorizontalBox(panels));
+	}
+}

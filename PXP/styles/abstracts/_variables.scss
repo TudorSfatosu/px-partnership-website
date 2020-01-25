@@ -1,0 +1,83 @@
+$light-grey: #EAEDEF;
+$mid-grey: #D3D3D3;
+$article-light-grey: #EBECEE;
+$article-mid-grey: #D5DADE;
+$article-dark-grey: #707070;
+$ba-grey: #BABABA;
+$lightest-grey: #BDC2C8;
+$grey: #919BA2;
+$yellow: #ECEFA9;
+$light-blue-grey: #5C6B75;
+$mid-blue-grey: #4C5A5B;
+$dark-blue-grey: #495965;
+$px-yellow: #D6DB42;
+$light-mustard: #F6F7D8;
+$mustard: #D6DB42;
+$light-green: #F2F4C5;
+$px-green: #42DB89;
+$px-blue: #42BCDB;
+$px-orange: #DB9E42;
+$white: #fff;
+$black: #000;
+
+$four-colors: (orange, yellow, blue, green);
+
+// colors set array
+// TODO - TOPONDER Is there a way to merge the array with the values?
+$colors: (
+        grey: $grey,
+        grey-hover: darken($grey, 10%),
+        mid-grey: $mid-grey,
+        mid-grey-hover: darken($mid-grey, 10%),
+        light-green: $light-green,
+        light-green-hover: darken($light-green, 10%),
+        light-grey: $light-grey,
+        light-grey-hover: $mid-grey,
+        light-blue-grey: $light-blue-grey,
+        light-blue-grey-hover: darken($light-blue-grey, 5%),
+        mid-blue-grey: $mid-blue-grey,
+        mid-blue-grey-hover: darken($mid-blue-grey, 5%),
+        dark-blue-grey: $dark-blue-grey,
+        dark-blue-grey-hover: lighten($dark-blue-grey, 15%),
+        mustard: $mustard,
+        mustard-hover: darken($mustard, 10%),
+        white: $white,
+        white-hover: darken($white, 18%),
+        yellow: $yellow,
+        yellow-hover: darken($yellow, 18%),
+        black: $black,
+        black-hover: lighten($black, 10%),
+        px-yellow: $px-yellow,
+        px-yellow-hover: darken($px-yellow, 18%),
+        px-orange: $px-orange,
+        px-orange-hover: darken($px-orange, 18%),
+        px-green: $px-green,
+        px-green-hover: darken($px-green, 18%),
+        px-blue: $px-blue,
+        px-blue-hover: darken($px-blue, 18%),
+        article-light-grey: $article-light-grey,
+        article-light-grey-hover: darken($article-light-grey, 18%),
+        article-mid-grey: $article-mid-grey,
+        article-mid-grey-hover: darken($article-mid-grey, 18%),
+        article-dark-grey: $article-dark-grey,
+        article-dark-grey-hover: lighten($article-dark-grey, 13%),
+        ba-grey: $ba-grey,
+        ba-grey-hover: darken($ba-grey, 13%),
+        lightest-grey: $lightest-grey,
+        lightest-grey-hover: darken($lightest-grey, 13%)
+);
+
+//layout breakpoints
+$xs: 576px;
+$sm: 577px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+$breakpoints: (
+        xs: 576px,
+        sm: 577px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+);

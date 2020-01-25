@@ -1,0 +1,21 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.GeneralPage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+<div class="container py-4 general-container">
+	<div class="row py-3">
+		<div class="col-12">
+			<div id="textcontent">
+				@Model.Content.Copy
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+

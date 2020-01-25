@@ -1,0 +1,102 @@
+.steps-gallery-container {
+	.container-fluid {
+		@include mq(sm) {
+			width: 90%;
+		}
+
+		@include mq(xl) {
+			width: 87%;
+		}
+	}
+
+	.step-gallery-row {
+		padding-top: 1em;
+
+		@include mq(sm) {
+			padding-top: 2em;
+		}
+
+		@include mq(xl) {
+			padding-top: 3em;
+		}
+	}
+
+	.introductory-row {
+		padding-top: 3em;
+
+		@include mq(sm) {
+			padding-top: 4em;
+		}
+
+		@include mq(xl) {
+			padding-top: 5em;
+		}
+	}
+
+	.step-title-row {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 1em;
+		height: 3em;
+
+		.step-title {
+			margin-bottom: 0;
+			display: flex;
+			margin-left: 0;
+			@include mq(md) {
+				margin-left: 2em;
+			}
+			align-self: center;
+		}
+		.step-icon {
+			align-self: center;
+		}
+	}
+
+	.step-image {
+		width: 100%;
+		height: 14em;
+		padding: 0;
+
+		@include mq(sm) {
+			padding: .5em;
+			height: 18em;
+		}
+
+		@include mq(md) {
+			height: 16em;
+		}
+
+		@include mq(lg) {
+			height: 19em;
+		}
+
+		@include mq(xl) {
+			padding: 1em;
+			height: 22em;
+		}
+
+		object-fit: contain;
+		border: 1px solid black;
+	}
+
+	.step-image-caption {
+		padding-top: 1em;
+		padding-bottom: 1em;
+
+		@include mq(xl) {
+			padding-top: 2em;
+			padding-bottom: 4em;
+		}
+	}
+
+	.empty-slot-image {
+		width: 100%;
+		height: 26em;
+		object-fit: cover;
+
+		@include mq(xl) {
+			padding-top: 4em;
+		}
+	}
+}

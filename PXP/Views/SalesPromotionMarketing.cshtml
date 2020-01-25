@@ -1,0 +1,52 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.SalesPromotionMarketing>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+@Html.Partial("Banner", new Banner(Model.Content))
+
+<!-- Article Images -->
+<section class="article article-images container">
+	<div class="row">
+		<div class="col-12 col-lg-6 order-2 order-sm-1">
+			<div class="article-text text-center">
+				@if (@Model.Content.Title.Any())
+				{
+					<h2 class=" article-images-title article-dark-grey-text">@Model.Content.Title</h2>
+				}
+				@Model.Content.Copy
+			</div>
+		</div>
+		<div class="col-12 col-lg-6 text-center order-1 order-sm-2 d-none d-lg-block">
+			<img src="@Model.Content.RightColumnImage1.Url" alt="@Path.GetFileNameWithoutExtension(Model.Content.RightColumnImage1.Url).Replace("-", " ")" class="article-image solo-image">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 text-center order-1 order-sm-2">
+			<img src="@Model.Content.LeftColumnImage1.Url" alt="@Path.GetFileNameWithoutExtension(Model.Content.LeftColumnImage1.Url).Replace("-", " ")" class="article-image half-height-image half-height-image--first">
+			<img src="@Model.Content.LeftColumnImage2.Url" alt="@Path.GetFileNameWithoutExtension(Model.Content.LeftColumnImage2.Url).Replace("-", " ")" class="article-image half-height-image">
+		</div>
+		<div class="col-sm-6 text-center order-1 order-sm-2">
+			<img src="@Model.Content.RightColumnImage2.Url" alt="@Path.GetFileNameWithoutExtension(Model.Content.RightColumnImage2.Url).Replace("-", " ")" class="full-height-image article-image">
+		</div>
+	</div>
+	<div class="row find-out-row text-center">
+		<div class="col-12 offset-sm-2 col-sm-8">
+			<h2 class="px-yellow-text find-out">@Model.Content.PanelTitle</h2>
+			<div class="px-yellow-hr"></div>
+		</div>
+	</div>
+</section>
+<!-- / Article Images -->
+
+
+@if (Model.Content.Panel.Any())
+{
+	foreach (var panels in @Model.Content.Panel)
+	{
+		@Html.Partial("HorizontalBox", new HorizontalBox(panels));
+	}
+}

@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "styles/style.css",
+    "inputFile": "styles/style.scss"
+  },
+  {
+    "outputFile": "styles/base/_typography.css",
+    "inputFile": "styles/base/_typography.scss"
+  }
+]

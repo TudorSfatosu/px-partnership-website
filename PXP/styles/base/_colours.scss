@@ -1,0 +1,28 @@
+@include colorSet(grey);
+@include colorSet(mid-grey);
+@include colorSet(light-green);
+@include colorSet(light-grey);
+@include colorSet(light-blue-grey);
+@include colorSet(mid-blue-grey);
+@include colorSet(dark-blue-grey);
+@include colorSet(mustard);
+@include colorSet(yellow);
+@include colorSet(white);
+@include colorSet(black);
+@include colorSet(px-yellow);
+@include colorSet(px-orange);
+@include colorSet(px-green);
+@include colorSet(px-blue);
+@include colorSet(article-light-grey);
+@include colorSet(article-mid-grey);
+@include colorSet(article-dark-grey);
+@include colorSet(ba-grey);
+@include colorSet(lightest-grey);
+
+.dark-blue-grey-xs-text {
+	color: $dark-blue-grey;
+	text-decoration: underline;
+	@include mq(sm) {
+		color: $white;
+	}
+}

@@ -1,0 +1,302 @@
+﻿.offer-container {
+    margin: 40px 0;
+
+    h1 {
+        font-family: "museo-sans",sans-serif,sans;
+        font-size: 1.5em;
+        margin-bottom: 40px;
+        font-weight: 700;
+        line-height: 140%;
+        color: inherit;
+
+        @include mq(md) {
+            font-size: 2em;
+        }
+    }
+
+    .sub-header {
+        background-color: #d6db42;
+        padding: 40px 15px;
+
+        h2 {
+            font-family: "museo-sans",sans-serif,sans;
+            font-size: 1.25em;
+            margin: 0;
+            font-weight: 500;
+            line-height: 140%;
+            color: inherit;
+
+            @include mq(md) {
+                font-size: 1.5em;
+            }
+        }
+    }
+
+    .form-wrap {
+        padding: 40px 0;
+        background-color: #B6BCC1;
+        border-bottom: 4px solid #ECEFA9;
+
+        @include mq(xl) {
+            .form-container {
+                max-width: 1200px;
+            }
+        }
+
+        .pxp-form-group {
+            margin-bottom: 20px;            
+
+            .text-danger {
+                font-size: 0.875em;
+                font-weight: 300;
+                color: #dd413a !important;
+                margin: 0;
+                text-transform:uppercase;
+            }
+
+            .form-control {
+                padding: 12px;
+
+                &::-webkit-input-placeholder {
+                    font-size: 0.875em;
+                    color: #ccc;
+                }
+
+                &::-moz-placeholder {
+                    font-size: 0.875em;
+                    color: #ccc;
+                }
+
+                &:-ms-input-placeholder {
+                    font-size: 0.875em;
+                    color: #ccc;
+                }
+
+                &:-moz-placeholder {
+                    font-size: 0.875em;
+                    color: #ccc;
+                }
+            }
+            /* Styles for hiding the native checkbox */
+            input[type='checkbox'].form-checkbox {
+                position: absolute;
+                left: -10000px;
+                top: auto;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+            }
+            /* Styles for the basic appearance of the custom checkbox */
+            input[type='checkbox'].form-checkbox ~ .check-toggle {
+                width: 30px;
+                height: 30px;
+                position: relative;
+                display: inline-block;
+                vertical-align: middle;
+                border: 2px solid #969696;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+            /* Styles for the hover state appearance of the custom checkbox */
+            input[type='checkbox'].form-checkbox:hover ~ .check-toggle {
+                border-color: #4a4a4a;
+            }
+            /* Styles for the focus state appearance of the custom checkbox */
+            input[type='checkbox'].form-checkbox:focus ~ .check-toggle {
+                border-color: #b0d5ff;
+                box-shadow: 0 0 0 2px rgba(23, 133, 255, 0.25);
+            }
+            /* Styles for the checked state appearance of the custom checkbox */
+            input[type='checkbox'].form-checkbox:checked ~ .check-toggle {
+                border-color: #d6db42;
+                background: #d6db42 url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSIyMCA2IDkgMTcgNCAxMiI+PC9wb2x5bGluZT48L3N2Zz4=) center no-repeat;
+                background-size: 75%;
+            }
+            /*.form-checkbox:checked::before {
+                position: absolute;
+                font: 13px/1 'Open Sans', sans-serif;
+                left: 11px;
+                top: 7px;
+                content: '\02143';
+                transform: rotate(40deg);
+            }
+
+            .form-checkbox:hover {
+                background-color: #f7f7f7;
+            }
+
+            .form-checkbox:checked {
+                background-color: #f1f1f1;
+            }
+
+            label {
+                font: 15px/1.7 'Open Sans', sans-serif;
+                color: #333;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                cursor: pointer;
+            }*/
+        }
+
+
+        
+        .form-msg {
+            padding:20px;
+            background-color: #006633;
+            border-radius: 3px;
+            margin-bottom: 30px;
+
+            .text-danger {
+                font-size: 0.875em;
+                font-weight: 300;
+                color: #dd413a !important;
+                margin: 0;
+                text-transform:uppercase;
+            }
+
+            p {
+                font-size: 0.875em;
+                font-weight: 300;
+                margin: 0;
+                text-transform:uppercase;
+                line-height:150%;
+
+                &.success {
+                    color:#fff;
+                }
+            }
+
+            .mail-list {
+                margin-top:30px;
+                padding:30px 0 0 0;
+                border-top:1px solid #008442;
+
+                p {
+                    font-size: 0.875em;
+                    font-weight: 300;
+                    color:#fff;
+                    margin: 0;
+                    line-height:150%;
+                    text-transform:initial;
+
+                    a {
+                        color:#cccccc;
+                    }
+                }
+            }
+        }
+
+        .form-msg-error {
+            padding:20px 0;
+
+            .text-danger {
+                font-size: 0.875em;
+                font-weight: 300;
+                color: #dd413a !important;
+                margin: 0;
+                text-transform:uppercase;
+            }
+        }
+
+
+        video {
+            border: 4px solid #d6db42;
+        }
+
+        .quote-wrap {
+            padding: 20px;
+            background-color: #fff;
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+            @include mq(md) {
+                margin-top: 60px;
+                margin-bottom: 0;
+            }
+
+            p {
+                font-size: 1.125em;
+                font-weight: 300;
+            }
+
+            span {
+                display: block;
+                font-size: 1em;
+                font-weight: 300;
+                color: #444;
+            }
+        }
+
+
+        
+        /* clients */
+        .clients {
+            margin: 40px 0 0 0;
+            padding: 30px 15px;
+            text-align: center;
+            background-color: #fff;
+
+            .client-item {
+                padding:10px 10px;
+
+                img {
+                    width:auto;
+                    margin-left:auto;
+                    margin-right:auto;
+                    height:60px;
+                }
+            }
+        }
+    
+        @include mq(md) {
+            .clients {
+
+                .client-item {
+                    padding:0 8px;
+
+                    &:first-of-type {
+                        padding-left:0;
+                    }
+
+                    &:last-of-type {
+                        padding-right:0;
+                    }
+
+                    img {
+                        height:50px;
+                    }
+                }
+            }
+        }
+    
+        @include mq(lg) {
+            .clients {
+
+                .client-item {
+                    padding:0 8px;
+
+                    img {
+                        height:70px;
+                    }
+                }
+            }
+        }
+    
+        @include mq(xl) {
+            .clients {
+
+                .client-item {
+                    padding:0 8px;
+
+                    img {
+                        height:80px;
+                    }
+                }
+            }
+        }
+    }
+
+    
+
+
+}

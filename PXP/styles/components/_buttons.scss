@@ -1,0 +1,147 @@
+.px-btn {
+	transition: color .5s cubic-bezier(0.25, 0.1, 0.25, 1);
+	transition: border .5s cubic-bezier(0.25, 0.1, 0.25, 1);
+	&.small-px-btn {
+		padding: .5em .75em;
+	}
+
+	&.large-px-btn {
+		padding: .75em 2em;
+
+		@include mq(sm) {
+			padding: .5em 2em;
+		}
+
+		@include mq(md) {
+			padding: .75em 2.25em;
+		}
+	}
+}
+
+.back-button {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 116%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: $dark-blue-grey 1px solid;
+  overflow: hidden;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  &.back {
+    .arrow-wrap {
+      left: -50%;
+    }
+  }
+  &:hover {
+    background: $dark-blue-grey;
+    .arrow-wrap {
+      span {
+        background: #fff;
+      }
+    }
+  }
+  .arrow-wrap {
+    display: block;
+    position: absolute;
+    height: 70%;
+    width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.3s ease;
+    span {
+      height: 1px;
+      left: 0;
+      top: 50%;
+      background: $dark-blue-grey;
+      position: absolute;
+      display: block;
+      transition: background 0.3s ease;
+    }
+    .arrow-part-1 {
+      width: 100%;
+      transform: translate(0, -50%);
+    }
+    .arrow-part-2 {
+      width: 60%;
+      transform: rotate(-45deg);
+      transform-origin: 0 0;
+    }
+    .arrow-part-3 {
+      width: 60%;
+      transform: rotate(45deg);
+      transform-origin: 0 0;
+    }
+  }
+}
+
+/* Common button styles */
+.button {
+  cursor: pointer;
+  display: block;
+  margin: 1em;
+  padding: 1em 2em;
+  border: none;
+  background: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+}
+.button:focus {
+  outline: none;
+}
+.button > span {
+  vertical-align: middle;
+}
+
+/* Aylen */
+.button.button--aylen {
+  background: $mustard;
+  color: $dark-blue-grey;
+  overflow: hidden;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+
+}
+.button--aylen.button--inverted {
+  background: lighten($mustard, 5%);
+}
+.button--aylen::before,
+.button--aylen::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 100%;
+  left: 0;
+  z-index: -1;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+.button--aylen::before {
+  background: darken($mustard, 4%);
+}
+.button--aylen::after {
+  background: darken($mustard, 15%);
+}
+.button--aylen:hover {
+  border: 0;
+  color: $black;
+}
+.button--aylen:hover::before,
+.button--aylen:hover::after {
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
+.button--aylen:hover::after {
+  -webkit-transition-delay: 0.175s;
+  transition-delay: 0.175s;
+}

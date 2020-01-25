@@ -1,0 +1,23 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.NavCardSmall>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using System.IO;
+
+@{
+	UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+	IPublishedContent currentPage = umbracoHelper.AssignedContentItem;
+}
+
+<!-- / Builders Card -->
+<a hreflang="en-gb" rel="canonical" href="@Model.Content.Link.Url" class="card @(@currentPage.Url == @Model.Content.Link.Url ? "active" : null)">
+	<div class="card-body card-body-head px-@Model.Content.Color.Label-bg">
+		<h5 class="card-title mid-blue-grey-text">@Model.Content.Title</h5>
+	</div>
+	<img class="card-img-top" src="@Model.Content.Image.Url"
+		 alt="@Path.GetFileNameWithoutExtension(Model.Content.Image.Url).Replace("-", " ")">
+
+	<div class="card-body">
+			<span class="dark-blue-grey-text horiz-card-text">See more info</span>
+			<div class="card-btn card-btn-@Model.Content.Color.Label"></div>
+	</div>
+</a>
+<!-- / Builders Card -->

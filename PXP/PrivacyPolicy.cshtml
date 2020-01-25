@@ -1,0 +1,66 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.PrivacyPolicy>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+@section scripts {
+	<script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#accordion ul li').click(function () {
+                if ($(':animated').length) {
+                    return false;
+                }
+
+                if ($(this).is(".open")) {  //If it's already open then do nothing
+                    $(this).find('.content-wrap').slideToggle();
+                }
+
+                else {
+
+                    $(this).addClass('open');
+                    $(this).find('.content-wrap').slideToggle();
+                    $("#accordion ul li").not(this).removeClass('open');
+                    $("#accordion ul li").not(this).find('.content-wrap').slideUp();
+                }
+            });
+        });
+	</script>
+}
+
+@if (Model.Content.PolicySections.Any())
+{
+	var i = 1;
+	<div class="section-policy">
+		<div class="container container-md">
+			<div class="row">
+				<div class="col-12">
+					<div id="accordion">
+						<ul>
+							@foreach (var Policies in Model.Content.PolicySections)
+							{
+								var Policy = new NestedPolicy(Policies);
+
+								<li>
+									<div>
+										<a href="javascript:void(0); title">
+											<h3 class="faux-black-text faux-black-text-hover contact">@i. @Policy.Title</h3>
+										</a>
+										<div class="content-wrap">
+											<div class="content text">
+												@Html.Raw(Policy.Text)
+											</div>
+										</div>
+									</div>
+								</li>
+								i++;
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}

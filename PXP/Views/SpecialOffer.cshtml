@@ -1,0 +1,89 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.SpecialOffer>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Master_No_Nav.cshtml";
+}
+
+@section Scripts {
+    <script src="~/scripts/video.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/scripts/jquery.validate.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/scripts/vendor/mvcfoolproof.unobtrusive.min.js"></script>
+}
+
+<div class="offer-container">
+    <div class="container">
+        <h1 class="text-center">@Model.Content.Title</h1>
+        <div class="content-wrap">
+
+        </div>
+    </div>
+
+    <div class="sub-header">
+        <div class="container">
+            <h2 class="text-center">@Model.Content.SubIntro</h2>
+        </div>
+    </div>
+
+    <div class="form-wrap">
+        <div class="container form-container">
+            <div class="row">
+                <div class="col-md-6 order-md-1 order-2">
+                    @if (TempData["success"] != null)
+                    {
+                        if ((bool)TempData["success"] == true)
+                        {
+                            <div class="form-msg">
+                                <p class="success">You are one step closer to offering Part Exchange to your buyers. Your message has been successfully sent and we will contact you shortly.</p>
+                                @if (TempData["Message"] != null)
+                                {
+                                    var MailchimpMessage = (MvcHtmlString)TempData["Message"];
+                                    <div class="mail-list">
+                                        @MailchimpMessage
+                                    </div>
+                                }
+                            </div>
+                        }
+                        else if ((bool)TempData["success"] == false)
+                        {
+                            <div class="form-msg-error">
+                                @Html.ValidationMessage("reCAPTCHA", new { @class = "text-danger" })
+                            </div>
+                        }
+                    }
+                    @Html.Action("SpecialOfferForm", "SpecialOfferForm")
+                </div>
+                <div class="col-md-6 order-md-2 order-1">
+                    @if (Model.Content.Video != null)
+                    {
+                        <div class="video-wrap">
+                            <video class="video-js" style="width:100%; height:auto;" controls controlsList="nodownload">
+                                <source src="@Model.Content.Video.Url" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="quote-wrap">
+                            <p>"@Model.Content.TestimonialCopy"</p>
+                            <span>@Model.Content.TestimonialName</span>
+                            <span>@Model.Content.TestimonialCompany</span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="clients">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in Model.Content.Clients)
+                    {
+                        <div class="col-12 col-md d-md-flex align-items-md-center client-item">
+                            <img src="@item.Url" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

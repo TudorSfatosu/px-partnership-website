@@ -1,0 +1,70 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.AboutPxpartnership>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+@using System.IO;
+@{
+	Layout = "Master.cshtml";
+}
+
+@Html.Partial("Banner", new Banner(Model.Content))
+
+<!-- Article -->
+<section class="article container">
+	<div class="row">
+		<div class="col-sm-6 order-2 order-sm-1">
+			<div class="article-text article-dark-grey-text">
+				@Model.Content.ArticleCopy
+				<p class="text-center">
+					<a hreflang="en-gb" rel="canonical" href="@Model.Content.ArticleLink.Url" class="px-orange-btn large-px-btn px-btn d-sm-none">
+						Learn
+						More
+					</a>
+				</p>
+			</div>
+		</div>
+		<div class="col-sm-6 text-center order-1 order-sm-2">
+			<img alt="@Path.GetFileNameWithoutExtension(Model.Content.ArticleImage.Url).Replace("-", " ")" src="@Model.Content.ArticleImage.Url" class="article-image">
+			<a hreflang="en-gb" rel="canonical" href="@Model.Content.ArticleLink.Url" class="px-orange-btn large-px-btn px-btn d-none d-sm-inline">
+				Learn
+				More
+			</a>
+		</div>
+	</div>
+</section>
+<!-- / Article -->
+<!-- Horizonatl box -->
+@if (Model.Content.Panel.Any())
+{
+	foreach (var panels in @Model.Content.Panel)
+	{
+		@Html.Partial("HorizontalBox", new HorizontalBox(panels));
+	}
+}
+<!-- /Horizonatl box -->
+<!-- Builders Cards -->
+<section class="builders-cards builders-cards--small">
+	<div class="builders-cards-header dark-blue-grey-bg text-center">
+		<div class="container ">
+			<div class="row builders-cards-header-row">
+				<h2 class="white-text card-heading">
+					@Model.Content.BuildersCardsTitle
+				</h2>
+			</div>
+		</div>
+	</div>
+	<div class="builders-cards-body light-blue-grey-bg">
+		<div class="container">
+			<div class="card-group">
+
+				@if (Model.Content.BuildersCards.Any())
+				{
+					foreach (var cards in @Model.Content.BuildersCards)
+					{
+						@Html.Partial("BuildersCards", new NavCardSmall(cards));
+					}
+				}
+			</div>
+		</div>
+	</div>
+</section>
+<!-- / Builders Cards -->

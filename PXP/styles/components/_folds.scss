@@ -1,0 +1,124 @@
+// Regular white fold
+
+.fold::before,
+.micro-fold::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 0;
+  z-index: 2;
+  border-style: solid;
+}
+
+.fold--small::before {
+  @include mq(sm) {
+    border-width: 21px;
+  }
+  @include mq(md) {
+    border-width: 27px;
+  }
+  @include mq(lg) {
+    border-width: 37px;
+  }
+  @include mq(xl) {
+    border-width: 39px;
+  }
+}
+
+.fold--medium::before {
+  @include mq(sm) {
+    border-width: 20px;
+  }
+  @include mq(md) {
+    border-width: 25px;
+  }
+  @include mq(lg) {
+    border-width: 30px 33px;
+  }
+}
+
+.fold--large::before {
+  @include mq(sm) {
+    border-width: 40px;
+  }
+  @include mq(md) {
+    border-width: 52px;
+  }
+  @include mq(lg) {
+    border-width: 66px 63px;
+  }
+  @include mq(xl) {
+    border-width: 106px 103px;
+  }
+}
+
+.fold--footer::before {
+  @include mq(sm) {
+    right: 11%;
+  }
+  @include mq(md) {
+    left: 5%;
+  }
+  @include mq(lg) {
+    left: 7%;
+  }
+  @include mq(xl) {
+    left: 10%;
+  }
+}
+
+.fold--pos-left::before,
+.micro-fold--pos-left::after {
+  left: 0;
+}
+
+.fold--pos-top::before {
+  @include mq(sm) {
+    top: 11%;
+  }
+  @include mq(md) {
+    top: 5%;
+  }
+  @include mq(lg) {
+  }
+  @include mq(xl) {
+    top: 0;
+  }
+}
+
+.micro-fold--small::after {
+  @include mq(sm) {
+    border-width: 11px;
+  }
+  @include mq(md) {
+    border-width: 17px;
+  }
+  @include mq(lg) {
+    border-width: 17px 18px;
+  }
+  @include mq(xl) {
+    border-width: 21px 25px;
+  }
+
+}
+
+.micro-fold--pos-top::after {
+  @include mq(sm) {
+    top: 11%;
+  }
+  @include mq(md) {
+    top: 3em;
+  }
+  @include mq(lg) {
+    top: 4em;
+  }
+  @include mq(xl) {
+    top: 6em;
+  }
+}
+
+.fold--builders-card::before {
+  margin-top: -3px;
+  right: 48px;
+}

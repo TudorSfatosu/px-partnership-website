@@ -1,0 +1,73 @@
+.horizontal-box {
+
+  &.px-yellow-bg {
+    .horiz-card-heading,
+    .horiz-card-text,
+    .px-btn {
+      color:   $dark-blue-grey;
+    }
+    .px-btn {
+      border: 2px solid $dark-blue-grey;
+    }
+  }
+	padding-right: 0;
+	padding-left: 0;
+	margin-bottom: 1em;
+
+	@include mq(lg) {
+		margin-bottom: 2em;
+	}
+
+	.horiz-card {
+		padding-top: 1em;
+		padding-bottom: 1em;
+
+		@include mq(md) {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+
+	.px-btn {
+		display: inline-flex;
+		margin-top: .75em;
+
+		@include mq(md) {
+			margin-top: 0;
+		}
+	}
+
+	.horiz-img-container {
+		padding: .7em;
+
+		.horiz-box-image {
+			width: 100%;
+			min-height: 13em;
+			object-fit: cover;
+		}
+	}
+
+	.horiz-card-heading {
+		@include mq(xl) {
+			padding-bottom: 1em;
+		}
+	}
+
+	.horiz-card-text {
+		padding-left: 9%;
+		padding-right: 9%;
+
+		@include mq(lg) {
+			padding-left: 19%;
+			padding-right: 19%;
+		}
+
+		@include mq(lg) {
+			padding-bottom: 1em;
+		}
+
+		div {
+			padding-bottom: 1em;
+		}
+	}
+}

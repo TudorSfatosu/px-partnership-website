@@ -1,0 +1,25 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HorizontalBox>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+<!-- Horizontal box -->
+<section class="horizontal-box container @Model.Content.BoxColour.Label-bg white-text">
+	<div class="row">
+		<div class="d-none d-sm-inline-block col-12 col-sm-6 col-lg-3 horiz-img-container my-auto">
+			<img class="horiz-box-image"
+				 src="@Model.Content.Image.Url" alt="@Path.GetFileNameWithoutExtension(Model.Content.Image.Url).Replace("-", " ")" />
+		</div>
+		<div class="col-12 col-sm-6 col-lg-9 text-center my-auto horiz-card">
+			<h2 class="horiz-card-heading">
+				@Model.Content.Title
+			</h2>
+
+			<div class="horiz-card-text">
+				@Model.Content.Copy
+			</div>
+			<div>
+				<a class="white-btn small-px-btn px-btn" hreflang="en-gb" rel="canonical" href="@Model.Content.ButtonLink.Url">See more info</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- / Horizontal box -->

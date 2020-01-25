@@ -1,0 +1,66 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.PartExchange>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+@using System.IO;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+@Html.Partial("Banner", new Banner(Model.Content));
+
+<section class="article-card-container container-fluid">
+	@if (Model.Content.Article.Any())
+	{
+		var count = 0;
+		foreach (var articles in @Model.Content.Article)
+		{
+			count++;
+			var article = new ArticleNested(articles);
+			var articleSide = "";
+			var foldSide = "";
+			var classString = "";
+			if (count % 2 == 1)
+			{
+				articleSide = "left";
+				foldSide = "right";
+				classString = " offset-sm-1";
+			}
+			else
+			{
+				articleSide = "right";
+				foldSide = "left";
+				classString = " order-sm-1 offset-sm-2 order-2";
+			}
+
+			<!-- Article with card on the left side -->
+			<div class="row article-card-row article-card-row--@articleSide dark-blue-grey-border-top">
+				@if (count % 2 == 1)
+				{
+					<div class="col-12 col-sm-6 text-center article-card-col first-column fold white-fold--@foldSide fold--large micro-fold @article.ArticleColor.Label-micro-fold--top micro-fold--pos-top micro-fold--small">
+						<img src="@article.ArticleImage.Url" class="article-image" alt="@Path.GetFileNameWithoutExtension(@article.ArticleImage.Url).Replace("-", " ")">
+					</div>
+				}
+
+				<div class="col-12 col-sm-5 article-card-col second-column @classString">
+					<div class="article-text-container">
+						<h2 class="section-header @article.ArticleColor.Label-text">@article.ArticleTitle</h2>
+						<p class="article-text article-dark-grey-text">
+							@article.ArticleCopy
+						</p>
+						<p class="">
+							<a hreflang="en-gb" rel="canonical" href="@article.ArticleLink.Url" class="@article.ArticleColor.Label-btn large-px-btn px-btn">Learn More</a>
+						</p>
+					</div>
+				</div>
+				@if (count % 2 == 0)
+				{
+					<div class="col-12 col-sm-6 text-center article-card-col first-column fold white-fold--@foldSide fold--pos-@foldSide fold--large micro-fold @article.ArticleColor.Label-micro-fold--top micro-fold--pos-left micro-fold--pos-top micro-fold--small order-1 order-sm-2">
+						<img src="@article.ArticleImage.Url" class="article-image" alt="@Path.GetFileNameWithoutExtension(@article.ArticleImage.Url).Replace("-", " ")">
+					</div>
+				}
+			</div>
+			<!-- / Article with card on the left side -->
+		}
+	}
+</section>

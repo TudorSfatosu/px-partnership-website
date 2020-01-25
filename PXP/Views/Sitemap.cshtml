@@ -1,0 +1,35 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{Layout = null;}<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+        <url>
+            <loc>@(((IPublishedContent)Model.Content.Site()).UrlWithDomain())</loc>
+            <lastmod>@Model.Content.Site().UpdateDate.ToString("s")+00:00</lastmod>
+        </url>
+        @ListChildNodes(Model.Content.AncestorOrSelf(1))
+</urlset>
+@helper ListChildNodes(IPublishedContent startNode)
+{
+    Response.ContentType = "text/xml";
+    const int maxLevelForSiteMap = 100;
+    foreach(var node in startNode.Children
+        .Where(n => 
+            n.IsVisible() && 
+            n.TemplateId > 0 && 
+            !Umbraco.IsProtected(n.Id, n.Path) && 
+            (!n.HasProperty("searchEngineSiteMapHide") || !n.GetPropertyValue<bool>("searchEngineSiteMapHide")))
+        .Select(n => n.AsDynamic()))
+    {
+    <url>
+        <loc>@(((IPublishedContent)node).UrlWithDomain())</loc>
+        <lastmod>@node.UpdateDate.ToString("s")+00:00</lastmod>
+        @if (node.SearchEngineSitemapChangeFreq.ToString() != ""){<changefreq>@node.SearchEngineSitemapChangeFreq</changefreq>}
+        @if (node.SearchEngineSitemapPriority.ToString() != ""){<priority>@node.SearchEngineSitemapPriority</priority>}
+    </url>
+        if (node.Level <= maxLevelForSiteMap)
+        {
+            @ListChildNodes(node)
+        }
+    }
+}

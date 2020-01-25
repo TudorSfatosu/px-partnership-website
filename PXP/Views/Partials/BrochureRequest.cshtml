@@ -1,0 +1,74 @@
+﻿@model Models.BrochureRequestFormViewModel
+@using Recaptcha.Web.Mvc
+
+
+@using (Html.BeginUmbracoForm("BrochureRequestSubmit", "ContactForm"))
+{
+    <!-- Name -->
+    <div class="pxp-form-group form-group--text">
+        @Html.LabelFor(m => m.Name, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </div>
+    <!-- / Name -->
+    <!-- Company -->
+    <div class="pxp-form-group form-group--text">
+        @Html.LabelFor(m => m.Company, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Company, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Company, "", new { @class = "text-danger" })
+    </div>
+    <!-- Company -->
+    <!-- Position/Job Title -->
+    <div class="pxp-form-group form-group--text">
+        @Html.LabelFor(m => m.Position, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Position, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Position, "", new { @class = "text-danger" })
+    </div>
+    <!-- Position/Job Title -->
+    <!-- Telephone -->
+    <div class="pxp-form-group form-group--text">
+        @Html.LabelFor(m => m.Tel, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Tel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Tel, "", new { @class = "text-danger" })
+    </div>
+    <!-- Telephone -->
+    <!-- Email -->
+    <div class="pxp-form-group form-group--text">
+        @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+    <!-- Email -->
+    <!-- Post Select -->
+    <div class="pxp-form-groupgroup form-group--select">
+        @Html.LabelFor(m => m.BrochureSelected, htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownListFor(m => m.BrochureSelected, Model.Brochure, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.BrochureSelected, "", new { @class = "text-danger" })
+    </div>
+    <!-- /Post Select -->
+    <!-- Address -->
+    <div class="pxp-form-group form-group--textarea">
+        @Html.LabelFor(m => m.Address, htmlAttributes: new { @class = "control-label" })
+        @Html.TextAreaFor(m => m.Address, new { @class = "form-control", @rows = "5" })
+        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+    </div>
+    <div class="pxp-form-group">
+        <div class="row d-flex justify-content-center">
+            <div class="col-10 d-flex align-items-center">
+                @Html.LabelFor(m => m.Maillist, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-2 text-right">
+                @Html.CheckBoxFor(m => m.Maillist, new { @class = "form-control chk" })
+            </div>
+        </div>
+        <small class="form-text">@Model.gDPREmailMessage</small>
+        @Html.ValidationMessageFor(m => m.Maillist, "", new { @class = "text-danger" })
+    </div>
+    <div class="pxp-form-group">
+        @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn pxp-form-btn dark-blue-grey-text">Send Request</button>
+    </div>
+    <!-- / Address -->
+}

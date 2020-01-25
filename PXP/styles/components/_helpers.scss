@@ -1,0 +1,12 @@
+.pb-3, .py-3 {
+  padding-bottom: .5rem !important;
+  @include mq(sm) {
+    padding-bottom: 1rem !important;
+  }
+}
+.pt-3, .py-3 {
+  padding-top: .5rem !important;
+  @include mq(sm) {
+    padding-top: 1rem !important;
+  }
+}

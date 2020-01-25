@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.PressEnquiries>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+<!-- Press enquires -->
+<div class="container py-4 general-container">
+	<div class="row pb-3">
+		<div class="col-12">
+			<h1 class="grey-text">@Model.Content.Name</h1>
+		</div>
+	</div>
+	@if (Model.Content.PressEnquires.Any())
+	{
+		foreach (var qnas in @Model.Content.PressEnquires)
+		{
+			var qna = new QAsrich(qnas);
+			<div class="row py-3">
+				<div class="col-12">
+					<h3 class="light-blue-grey-text">@qna.Question</h3>
+					<p>
+						@qna.Answer
+					</p>
+				</div>
+			</div>
+		}
+	}
+</div>
+<!-- /Press enquires -->

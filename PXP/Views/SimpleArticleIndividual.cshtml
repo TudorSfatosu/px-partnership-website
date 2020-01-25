@@ -1,0 +1,28 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.SimpleArticleIndividual>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using System.IO;
+@{
+	Layout = "Master.cshtml";
+}
+
+<!-- Article wih half image -->
+<section class="article-image-half article-image-half--full white-text article-light-grey-bg">
+	<div class="container-fluid article-mid-grey-bg article-hr"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-6 order-2 order-md-1">
+				<div class="article-image-half-title article-dark-grey-text">
+					<h1 class="">@Model.Content.Title</h1>
+					<h3>@Model.Content.Date.ToString("MMMM dd yyyy")</h3>
+				</div>
+				<div class="article-dark-grey-text article-image-half-text pb-4">
+					@Model.Content.Copy
+				</div>
+			</div>
+			<div class="col-12 col-md-6 order-1 order-md-2 image-column">
+				<img src="@Model.Content.Image.Url" class="img-responsive" alt="@Path.GetFileNameWithoutExtension(@Model.Content.Image.Url).Replace("-", " ")">
+			</div>
+		</div>
+	</div>
+</section>
+<!-- / Article wih half image -->

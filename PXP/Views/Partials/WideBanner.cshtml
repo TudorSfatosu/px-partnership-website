@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.BannerWide>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+<!-- Wide banner with mask -->
+<section class="wide-banner white-text">
+	<div class="jumbotron jumbotron-fluid"
+			style="background-image: url('/images/masks/light-grey-mask-wide.png'), url('@Model.Content.BannerImage.Url')">
+		<div class="container breadcrumbs-container--wide">
+			<div class="top breadcrumbs">
+				<a hreflang="en-gb" rel="canonical" href="@Model.Content.Parent.Parent.Url">@Model.Content.Parent.Parent.Name</a>
+				<span>&nbsp;>&nbsp;</span>
+				<a hreflang="en-gb" rel="canonical" href="@Model.Content.Parent.Url">@Model.Content.Parent.Name</a>
+				<span>&nbsp;>&nbsp;</span>
+				<span class="active">@Model.Content.Name</span>
+			</div>
+		</div>
+		<div class="bottom text-center caption px-@Model.Content.PageColor.Label-bg--tp white-text">
+			<div class="container">
+				<h1 class="banner-caption mp-0">@Model.Content.BannerTitle</h1>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- / Wide banner with mask -->

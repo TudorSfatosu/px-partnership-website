@@ -1,0 +1,51 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.BlogNews>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using System.IO;
+@{
+	Layout = "Master.cshtml";
+}
+
+@Html.Partial("Banner", new Banner(Model.Content))
+
+@if (Model.Content.Children().Any())
+{
+	foreach (var articles in @Model.Content.Children())
+	{
+		
+		var article = new SimpleArticleIndividual(articles);
+		<!-- Article wih half image -->
+		<section class="article-image-half white-text article-light-grey-bg">
+			<div class="container-fluid article-mid-grey-bg article-hr"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-md-6 order-2 order-md-1">
+						<div class="article-image-half-title article-dark-grey-text">
+							<h2>@article.Title</h2>
+							<h3>@article.Date.ToString("MMMM dd yyyy")</h3>
+						</div>
+						<div class="article-dark-grey-text article-image-half-text">
+							@article.Summary
+						</div>
+						<div class="py-3">
+							<a hreflang="en-gb" rel="canonical" href="@article.Url" class="grey-btn small-px-btn px-btn white-bg my-3">Read More</a>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 order-1 order-md-2 image-column">
+						<img src="@article.Image.Url" class="img-responsive" alt="@Path.GetFileNameWithoutExtension(@article.Image.Url).Replace("-", " ")">
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / Article wih half image -->
+	}
+}
+
+<div class="container-fluid article-mid-grey-bg article-hr last-article-hr"></div>
+
+@if (Model.Content.Panel.Any())
+{
+	foreach (var panels in @Model.Content.Panel)
+	{
+		@Html.Partial("HorizontalBox", new HorizontalBox(panels));
+	}
+}

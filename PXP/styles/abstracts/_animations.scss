@@ -1,0 +1,87 @@
+// Navbar hover
+.special-ul-hover, .special-ul-hover:after, .special-ul-hover:before {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.special-ul-hover, a {
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  position: relative;
+  outline: none;
+}
+
+.special-ul-hover > a {
+  text-decoration: none;
+  z-index: 1;
+}
+
+.special-ul-hover > a:before {
+  content: "";
+  background: $grey;
+  position: absolute;
+  width: 100%;
+  @include mq(md) {
+    width: 40%;
+    margin-left: 30%;
+  }
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  border-radius: 5px;
+  transform: scaleX(0);
+  z-index: -1;
+}
+
+.special-ul-hover--leave > a:before {
+  @include mq(md) {
+    animation: .5s backwards no-hover-v cubic-bezier(0.25, 0.1, 0.25, 1);
+    animation-fill-mode: backwards;
+  }
+  z-index: -1;
+}
+
+.special-ul-hover > a:hover:before,
+.special-ul-hover > a:focus:before {
+  @include mq(md) {
+    animation: .5s forwards hover-v cubic-bezier(0.25, 0.1, 0.25, 1);
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes hover-v {
+  0% {
+    transform: scaleX(0);
+  }
+  45% {
+    transform: scaleX(1.01);
+  }
+  100% {
+    transform: scaleX(1.01);
+  }
+}
+
+@keyframes no-hover-v {
+  0% {
+    transform: scaleX(1.01);
+  }
+  55% {
+    transform: scaleX(1.01);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleX(0);
+    height: 3px;
+    opacity: .02;
+  }
+}
+
+@mixin drop-shadow($top, $left, $blur, $color, $inset: "") {
+	-webkit-filter: drop-shadow($top $left $blur $color unquote($inset));
+	-moz-filter: drop-shadow($top $left $blur $color unquote($inset));
+	-ms-filter: drop-shadow($top $left $blur $color unquote($inset));
+	-o-filter: drop-shadow($top $left $blur $color unquote($inset));
+	filter: drop-shadow($top $left $blur $color unquote($inset));
+}

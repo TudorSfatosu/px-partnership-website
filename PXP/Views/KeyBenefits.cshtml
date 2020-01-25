@@ -1,0 +1,72 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.KeyBenefits>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+@Html.Partial("Banner", new Banner(Model.Content))
+
+<!-- Key Benefits Gallery -->
+<section class="key-benefits-container">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center article-dark-grey-text lead-paragraph">
+				<p class="font-weight-bold">
+					@Model.Content.IntroCopy
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row key-benefits-row">
+			@if (Model.Content.Benefits.Any())
+			{
+				var count = 0;
+				var last = Model.Content.Benefits.Last();
+				foreach (var benefits in @Model.Content.Benefits)
+				{
+					count++;
+					var color = "";
+					var benefit = new QAS(benefits);
+
+					if (count % 2 == 1)
+					{
+						color = "green";
+					}
+					else
+					{
+						color = "blue";
+					}
+					<div class="col-12 col-md-6 col-xl-4 key-benefits-col key-benefits-col--@color">
+						@if (benefits.Equals(last))
+						{
+							<!-- Left image -->
+							<img class="d-none d-xl-block left-image" src="/images/box-images/chart.jpg" alt="chart image" />
+							<!-- /Left image -->
+							<!-- Right image -->
+							<img class="d-none d-xl-block right-image" src="/images/box-images/money.jpg" alt="money" />
+							<!-- /Right image -->
+						}
+						<div class="first-row text-center">
+							<h2 class="marketing-gallery-title article-dark-grey-text all-caps">@benefit.Question</h2>
+						</div>
+						<div class="second-row text-center article-dark-grey-text">
+							<p>@benefit.Answer</p>
+						</div>
+					</div>
+				}
+			}
+		</div>
+	</div>
+</section>
+<!-- / Key Benefits Gallery -->
+
+@if (Model.Content.Panel.Any())
+{
+	foreach (var panels in @Model.Content.Panel)
+	{
+		@Html.Partial("HorizontalBox", new HorizontalBox(panels));
+	}
+}

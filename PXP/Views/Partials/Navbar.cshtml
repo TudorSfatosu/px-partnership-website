@@ -1,0 +1,91 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	var Settings = @Umbraco.Content(1129);
+	UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+	IPublishedContent currentPage = umbracoHelper.AssignedContentItem;
+}
+
+	<!-- navbar -->
+	<nav class="navbar upper-navbar mp-0">
+		<div class="container flex-row-reverse mp-0">
+			<div class="row float-right mp-0">
+				<ul>
+					<li>
+						<a hreflang="en-gb" rel="canonical" href="tel:@Settings.ContactTel">
+							<img class="nav-small-icon call-icon" src="/images/icons/icon-phone.png" width="16" />
+							<span class="nav-upper-text">@Settings.ContactTel</span>
+						</a>
+					</li>
+					<li>
+						<a hreflang="en-gb" rel="canonical" href="@Settings.LoginLocation" target="_blank" >
+							<img class="nav-small-icon login-icon" alt="icon with a lock" src="/images/icons/icon-lock.png" width="16" />
+							<span class="nav-upper-text">Client Login</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<nav class="navbar navbar-expand-md bg-light navbar-light">
+		<div class="container logo-container">
+			<!-- Brand -->
+			<a class="navbar-brand" hreflang="en-gb" rel="canonical" href="/">
+				<span></span>
+
+				<div class="img-hover-shine">
+					<div>
+						<figure>
+							<img id="logo" alt="Logo" src="/images/logos/px-logo-grey.png" width="350">
+						</figure>
+					</div>
+				</div>
+			</a>
+
+			<!-- Toggler/collapsibe Button -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<!-- Navbar links -->
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					<li class="nav-item d-block d-sm-none">
+						<a class="nav-link nav-link-icon" hreflang="en-gb" rel="canonical" href="/">
+							<img src="/images/icons/icon-house.png" width="33" alt="icon with a house" />
+						</a>
+					</li>
+					@foreach (var Nav in CurrentPage.Site().Children)
+					{
+						if (Nav.HideInMainNavigation == false)
+						{
+							if (Nav.Children.Any() && Nav.HideDropdownNavigation == false)
+							{
+								<li class="nav-item special-ul-hover toggle-item">
+									<div class="show">
+										<a class="nav-link text-center double-click-open @(@currentPage.Url == @Nav.Url ? "active" : null)" hreflang="en-gb" rel="canonical" href="@Nav.Url" role="button" id="dropdownMenuLink"
+										   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											@Nav.Name
+										</a>
+										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+											@foreach (var children in Nav.Children)
+											{
+												<a class="dropdown-item @(@currentPage.Url == @children.Url ? "active" : null)" hreflang="en-gb" rel="canonical" href="@children.Url">@children.Name</a>
+											}
+										</div>
+									</div>
+								</li>
+							}
+							else
+							{
+								<li class="nav-item special-ul-hover">
+									<a class="nav-link @(@currentPage.Url == @Nav.Url ? "active" : null)" hreflang="en-gb" rel="canonical" href="@Nav.Url">@Nav.Name</a>
+								</li>
+							}
+						}
+					}
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- / navbar -->

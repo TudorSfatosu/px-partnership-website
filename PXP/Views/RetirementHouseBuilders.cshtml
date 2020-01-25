@@ -1,0 +1,48 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.RetirementHouseBuilders>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+@Html.Partial("WideBanner", new BannerWide(Model.Content))
+
+@Html.Partial("BuildersArticle", new BuildersArticle(Model.Content))
+
+<!-- Horizonatl box -->
+@if (Model.Content.Panel.Any())
+{
+	foreach (var panels in @Model.Content.Panel)
+	{
+		@Html.Partial("HorizontalBox", new HorizontalBox(panels))
+	}
+}
+<!-- /Horizonatl box -->
+<!-- Builders Cards -->
+<section class="builders-cards builders-cards--small">
+	<div class="builders-cards-header dark-blue-grey-bg text-center">
+		<div class="container ">
+			<div class="row builders-cards-header-row">
+				<h2 class="white-text card-heading">
+					@Model.Content.BuildersCardsTitle
+				</h2>
+			</div>
+		</div>
+	</div>
+	<div class="builders-cards-body light-blue-grey-bg">
+		<div class="container">
+			<div class="card-group @Model.Content.Name">
+
+				@if (Model.Content.BuildersCards.Any())
+				{
+					foreach (var cards in @Model.Content.BuildersCards)
+					{
+						@Html.Partial("BuildersCards", new NavCardSmall(cards));
+					}
+				}
+			</div>
+		</div>
+	</div>
+</section>
+<!-- / Builders Cards -->

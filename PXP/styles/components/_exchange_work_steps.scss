@@ -1,0 +1,490 @@
+.exchange-work-steps {
+	.row {
+		padding: 0;
+
+		@include mq(lg) {
+			padding: 0 1em 0 1em;
+		}
+
+		&:last-child {
+			@include mq(lg) {
+				padding: 0 1em 6em 1em;
+			}
+
+			@include mq(lg) {
+				padding: 0 1em 7em 1em;
+			}
+		}
+	}
+
+	.intro-text {
+		max-width: 88%;
+		margin-left: 6%;
+		padding-bottom: 2em;
+		padding-top: 2em;
+
+		@include mq(lg) {
+			padding-bottom: 4em;
+			padding-top: 4em;
+		}
+	}
+	// Column or the box itself
+	.steps-column {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: .5em 0;
+
+		@include mq(sm) {
+			padding: 0 1em 1em 1em;
+		}
+		@include mq(lg) {
+			padding: 0;
+		}
+		@include mq(xl) {
+			padding: 0 .5em;
+		}
+		// Square box
+		.step-box {
+			justify-content: center;
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 30%;
+			flex: 0 0 30%;
+			max-width: 30%;
+			height: 7em;
+
+			@include mq(sm) {
+				height: 8em;
+			}
+
+			@include mq(md) {
+				height: 10em;
+			}
+
+			@include mq(lg) {
+				height: 10em;
+			}
+
+			@include mq(xl) {
+				height: 13em;
+			}
+
+			border-color: $mustard;
+			border-style: solid;
+			border-width: 3px 1px 3px 3px;
+			padding-bottom: 0;
+			padding-top: 0;
+
+			@include mq(sm) {
+				border-width: 4px 2px 4px 4px;
+
+				&.step-box--right {
+					border-width: 4px 2px 4px 0;
+				}
+			}
+
+			@include mq(lg) {
+				border-width: 6px 3px 6px 6px;
+
+				&.step-box--right {
+					border-width: 6px 3px 6px 6px;
+				}
+			}
+
+			@include mq(xl) {
+				border-width: 8px 4px 8px 8px;
+
+				&.step-box--right {
+					border-width: 8px 4px 8px 8px;
+				}
+
+				padding-bottom: 1em;
+				padding-top: 1em;
+			}
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			.step {
+				@include spread-value(font-size, 14px, 20px);
+				text-transform: uppercase;
+			}
+
+			.number {
+				font-size: 6em;
+
+				@include mq(sm) {
+					font-size: 7em;
+				}
+
+				@include mq(md) {
+					font-size: 8em;
+				}
+
+				@include mq(lg) {
+					font-size: 9em;
+				}
+
+				@include mq(xl) {
+					font-size: 10em;
+				}
+
+				font-weight: 900;
+				line-height: .8em;
+			}
+		}
+		// The box with the text and image
+		.step-description {
+			max-width: 100%;
+			width: 100%;
+			height: 7em;
+			padding-top: 0;
+			padding-bottom: 0;
+
+			@include mq(sm) {
+				height: 8em;
+			}
+
+			@include mq(md) {
+				height: 10em;
+			}
+
+			@include mq(lg) {
+				height: 10em;
+			}
+
+			@include mq(xl) {
+				height: 13em;
+			}
+
+			align-items: center;
+			border-color: $mustard;
+			border-style: solid;
+			border-width: 3px 3px 3px 1px;
+
+			@include mq(sm) {
+				border-width: 4px 4px 4px 2px;
+			}
+
+			@include mq(lg) {
+				border-width: 6px 6px 6px 3px;
+			}
+
+			@include mq(xl) {
+				border-width: 8px 8px 8px 4px;
+			}
+
+			display: flex;
+
+			.step-text {
+				padding-top: .5em;
+				padding-left: .5em;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+
+				@include mq(sm) {
+					padding-top: 1em;
+					padding-left: 1em;
+				}
+
+				@include mq(lg) {
+					width: 60%;
+				}
+
+				@include mq(xl) {
+					width: 50%;
+				}
+
+				p {
+					margin-bottom: 1rem;
+					line-height: 1.25em;
+
+					@include mq(md) {
+						line-height: 1.35em;
+					}
+				}
+
+				span {
+					display: inline-block;
+
+					@include mq(sm) {
+						display: initial;
+					}
+				}
+			}
+
+			.step-text, .step-text a {
+				line-height: 1.5em;
+
+				@include mq(sm) {
+					line-height: 1.5em;
+				}
+
+				@include mq(md) {
+					line-height: 2em;
+				}
+
+				@include mq(lg) {
+					line-height: 1.25em;
+				}
+
+				@include mq(xl) {
+					line-height: 1.5em;
+				}
+
+				@include spread-value(font-size, 14px, 17px);
+			}
+		}
+		// Color variations of the boxes
+		&.xs-white-lg-green-bg-step {
+			.step-box {
+				background: $white;
+
+				div {
+					color: $mustard;
+				}
+			}
+
+			@include mq(lg) {
+				.step-box {
+					background: $mustard;
+
+					div {
+						color: $white;
+					}
+				}
+			}
+		}
+
+		&.xs-green-lg-white-bg-step {
+			.step-box {
+				background: $mustard;
+
+				div {
+					color: $white;
+				}
+			}
+
+			@include mq(lg) {
+				.step-box {
+					background: $white;
+
+					div {
+						color: $mustard;
+					}
+				}
+			}
+		}
+
+		&.white-bg-step {
+			.step-box {
+				background: $white;
+
+				div {
+					color: $mustard;
+				}
+			}
+		}
+
+		&.green-bg-step {
+			.step-box {
+				background: $mustard;
+
+				div {
+					color: $white;
+				}
+			}
+		}
+	}
+
+	.full-width-row {
+		.step-description,
+		.step-box {
+			height: 14em;
+
+			@include mq(sm) {
+				height: 12em;
+			}
+
+			@include mq(md) {
+				height: 10em;
+			}
+
+			@include mq(lg) {
+				height: 10em;
+			}
+
+			@include mq(xl) {
+				height: 13em;
+			}
+		}
+
+		@include mq(lg) {
+			.step-description {
+				-webkit-box-flex: 0;
+				-ms-flex: 0 0 85%;
+				flex: 0 0 85%;
+				max-width: 85%;
+			}
+
+			.step-box {
+				-webkit-box-flex: 0;
+				-ms-flex: 0 0 15%;
+				flex: 0 0 15%;
+				max-width: 15%;
+			}
+
+			.steps-column {
+				.step-description {
+					div.step-text {
+						@include mq(lg) {
+							width: 75%;
+						}
+
+						@include mq(xl) {
+							width: 69%;
+						}
+					}
+
+					img.step-image {
+						width: 43%;
+					}
+				}
+			}
+		}
+	}
+}
+
+.arrow-down-container {
+	display: flex;
+	justify-content: center;
+
+	img {
+		@include mq(lg) {
+			height: 6em;
+			width: 4em;
+		}
+
+		@include mq(xl) {
+			height: 7em;
+			width: 5em;
+		}
+	}
+}
+
+.step-icon {
+	position: absolute;
+	right: 0;
+	transform: scale(.6);
+
+	@include mq(md) {
+		left: 0;
+		transform: scale(.65);
+	}
+
+	@include mq(lg) {
+		margin-left: .4em;
+		transform: scale(.7);
+	}
+
+	@include mq(xl) {
+		margin-left: .5em;
+		transform: scale(.75);
+	}
+}
+
+
+.step-description {
+	.step-icon {
+		left: initial;
+
+		@include mq(lg) {
+			right: -37%;
+			transform: scale(0.2);
+		}
+
+		@include mq(xl) {
+			right: -20%;
+			transform: scale(0.4);
+		}
+	}
+
+	.full-width-row & {
+		.step-icon {
+			@include mq(md) {
+				transform: scale(0.25);
+			}
+
+			@include mq(lg) {
+				right: -23%;
+				transform: scale(0.25);
+			}
+			@include mq(xl) {
+				right: -12%;
+				transform: scale(0.45);
+			}
+		}
+	}
+}
+
+.step-icon-5, .step-icon-1, .step-icon-2, .step-icon-3, .step-icon-4,
+.step-icon-6, .step-icon-7 {
+	display: inline-block;
+	background: url('sprite/steps.gif') no-repeat;
+	overflow: hidden;
+	text-indent: -9999px;
+	text-align: left;
+}
+
+.step-icon-5 {
+	background-position: -0px -0px;
+	width: 700px;
+	height: 221px;
+}
+
+.step-icon-1 {
+	background-position: -0px -228px;
+	width: 500px;
+	height: 285px;
+}
+
+.step-icon-2 {
+	background-position: -0px -526px;
+	width: 500px;
+	height: 256px;
+}
+
+.step-icon-3 {
+	background-position: -0px -784px;
+	width: 500px;
+	height: 257px;
+}
+
+.step-icon-4 {
+	background-position: -0px -1042px;
+	width: 500px;
+	height: 266px;
+}
+
+.step-icon-6 {
+	background-position: -0px -1310px;
+	width: 500px;
+	height: 139px;
+}
+
+.step-icon-7 {
+	background-position: -0px -1455px;
+	width: 500px;
+	height: 356px;
+}
+
+
+.step-match {
+	min-height: 10em;
+	@include mq(sm) {
+		min-height: 100%;
+	}
+}

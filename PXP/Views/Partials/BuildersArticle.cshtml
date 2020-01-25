@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.BuildersArticle>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+<!-- Builders Article -->
+<section class="builders-article article container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="article-text article-dark-grey-text">
+				<div>
+					@Model.Content.Copy
+				</div>
+				<div class="px-@Model.Content.PageColor.Label-text">
+					@Model.Content.PointsList
+				</div>
+				<div class="text-center">
+					<h2 class="px-@Model.Content.PageColor.Label-text find-out">@Model.Content.PanelTitle</h2>
+					<div class="px-@Model.Content.PageColor.Label-hr"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 text-center d-none d-md-block">
+			<div class="overflow-img-container">
+				<img class="left-image article-image" src="@Model.Content.ImageSmall1.Url" alt="@Path.GetFileNameWithoutExtension(Model.Content.ImageSmall1.Url).Replace("-", " ")">
+				<img class="right-image article-image" src="@Model.Content.ImageSmall2.Url" alt="@Path.GetFileNameWithoutExtension(Model.Content.ImageSmall2.Url).Replace("-", " ")">
+			</div>
+			<img class="bottom-image article-image d-none d-xl-block" src="@Model.Content.ImageLarge.Url" alt="@Path.GetFileNameWithoutExtension(Model.Content.ImageLarge.Url).Replace("-", " ")">
+		</div>
+	</div>
+</section>
+<!-- / Builders Article -->

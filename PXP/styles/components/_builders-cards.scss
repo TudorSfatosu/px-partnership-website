@@ -1,0 +1,327 @@
+.builders-cards {
+	@include mq(xl) {
+		padding-top: 3em;
+	}
+
+	.builders-cards-header-row {
+		flex-direction: column;
+		@include spread-value(padding, 1em, 2em);
+	}
+
+	.card-group {
+		width: 90%;
+		margin-left: 5%;
+
+		@include mq(md) {
+			width: 100%;
+			margin-left: 0%;
+		}
+
+		@include mq(lg) {
+			width: 90%;
+			margin-left: 5%;
+		}
+
+		@include mq(xl) {
+			width: 80%;
+			margin-left: 10%;
+		}
+
+		.card {
+			-webkit-box-flex: 1;
+			-ms-flex: 1 0 0%;
+			flex: 1 0 0%;
+			margin-bottom: 1em;
+
+			@include mq(sm) {
+				-webkit-box-flex: 1;
+				-ms-flex: 1 0 33%;
+				flex: 1 0 33%;
+				margin-bottom: .5em;
+			}
+
+			@include mq(md) {
+				-webkit-box-flex: 1;
+				-ms-flex: 1 0 0%;
+				flex: 1 0 0%;
+				margin-bottom: 0;
+			}
+
+			border: 0;
+			border-radius: 0;
+		}
+
+		.card:hover {
+			text-decoration: none;
+		}
+
+		.card-img-top {
+			object-fit: cover;
+
+			@include mq(sm) {
+				object-fit: cover;
+				height: initial;
+			}
+		}
+
+		.card-body-head {
+			min-height: 0;
+
+			@include mq(sm) {
+				min-height: 5em;
+			}
+
+			@include mq(sm) {
+				min-height: 6em;
+			}
+
+			@include mq(lg) {
+				min-height: 7em;
+			}
+		}
+
+		.card-body {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: .5em;
+
+			@include mq(sm) {
+				padding: 1em .5em .5em .5em;
+			}
+
+			@include mq(md) {
+				padding: 1em 1.25em .5em 1.25em;
+			}
+
+			@include mq(lg) {
+				padding: 1em 1.25em 1em 1.5em;
+			}
+
+			p {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.card-btn {
+				height: 3em;
+				width: 3em;
+			}
+
+			@each $color in $four-colors {
+				.card-btn-#{$color} {
+					background-image: url(/images/buttons/#{$color}-btn.png);
+				}
+			}
+		}
+	}
+
+	&.builders-cards--small {
+		.card-img-top {
+			height: 9em;
+
+			@include mq(md) {
+				height: auto;
+			}
+		}
+
+		.card {
+			animation: all .5s cubic-bezier(0.25, 0.1, 0.25, 1);
+			@include spread-value(margin-right, .25em, .5em);
+			@include spread-value(margin-left, .25em, .5em);
+
+			&.active {
+				-webkit-filter: brightness(74%) contrast(46%);
+				filter: brightness(74%) contrast(46%);
+				animation: all .5s cubic-bezier(0.25, 0.1, 0.25, 1);
+			}
+
+			&:hover:not(.active) {
+				cursor: pointer;
+				-webkit-filter: brightness(104%) contrast(100%);
+				filter: brightness(104%) contrast(100%);
+				animation: all .5s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+				@each $color in $four-colors {
+					.card-btn-#{$color} {
+						background-image: url(/images/buttons/inv-#{$color}-btn.png);
+						transition: 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+					}
+				}
+			}
+		}
+
+		.card-body {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.card-btn {
+			background-repeat: no-repeat;
+			background-size: contain;
+			display: flex;
+			align-self: flex-end;
+		}
+
+		.builders-cards-body {
+			@include spread-value(padding-bottom, 1em, 2em);
+			padding-top: 1em;
+
+			@include mq(sm) {
+				padding-top: 0;
+			}
+		}
+
+		p {
+			padding: 0;
+			margin: 0;
+		}
+	}
+
+	&.builders-cards--large {
+		.card-body-head {
+			position: absolute;
+		}
+
+		.card-img-top {
+			height: 7em;
+
+			@include mq(sm) {
+				height: 6em;
+			}
+
+			@include mq(sm) {
+				height: 7em;
+			}
+
+			@include mq(lg) {
+				height: auto;
+			}
+		}
+
+		.builders-cards-body {
+			margin-bottom: 2em;
+
+			@include mq(sm) {
+				margin-bottom: 3em;
+			}
+
+			@include mq(lg) {
+				margin-bottom: 5em;
+			}
+
+			padding-bottom: 0;
+			background: linear-gradient(to bottom, white 0%, white 60%, $lightest-grey 60%, $lightest-grey 60%, $lightest-grey 100%);
+		}
+
+		.builders-card-background {
+			position: absolute;
+			height: 12em;
+			width: 100%;
+			z-index: -1;
+			bottom: -4em;
+		}
+
+		.card-group {
+			width: 100%;
+			margin-left: 0;
+
+			.card-body {
+				padding: .5em 1em 0 1em;
+
+				@include mq(lg) {
+					padding: 1em 2em 0 2em;
+				}
+
+				@include mq(xl) {
+					padding: 1em 2em 0 2em;
+				}
+
+				.text {
+					margin-bottom: 1em;
+
+					@include mq(lg) {
+						margin-bottom: 2em;
+					}
+				}
+
+				.card-info,
+				.card-btn {
+					margin-right: .5em;
+
+					@include mq(sm) {
+						margin-right: 1em;
+					}
+				}
+
+				.card-info {
+					width: 7em;
+					display: flex;
+					align-items: center;
+				}
+
+				.card-btn {
+					width: 3em;
+					height: 3em;
+					background-repeat: no-repeat;
+					background-size: contain;
+				}
+
+				p {
+					margin-bottom: 0;
+
+					@include mq(lg) {
+						margin-bottom: 1rem;
+					}
+
+					justify-content: flex-end;
+				}
+
+				a {
+					margin-bottom: 0;
+					justify-content: flex-end;
+					display: flex;
+					padding-bottom: 1em;
+
+					span {
+						align-self: center;
+					}
+				}
+
+				a:hover {
+					text-decoration: none;
+
+					@each $color in $four-colors {
+						.card-btn-#{$color} {
+							background-image: url(/images/buttons/inv-#{$color}-btn.png);
+							transition: 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+						}
+					}
+				}
+			}
+		}
+
+		.card {
+			@include spread-value(margin-right, .5em, .7em);
+			@include spread-value(margin-left, .5em, .7em);
+		}
+
+		.card-title {
+			width: 100%;
+
+			@include mq(sm) {
+				width: 80%;
+			}
+
+			@include mq(lg) {
+				width: 60%;
+			}
+
+			@include mq(xl) {
+				width: 71%;
+			}
+		}
+	}
+}

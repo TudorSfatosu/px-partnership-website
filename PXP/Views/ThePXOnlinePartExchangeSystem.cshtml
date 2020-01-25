@@ -1,0 +1,67 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.OnlinePartExchangeSystem>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+@using System.IO;
+@{
+	Layout = "Master.cshtml";
+}
+
+@Html.Partial("Banner", new Banner(Model.Content))
+
+
+<!-- Article -->
+<section class="article container">
+	<div class="row">
+		<div class="col-sm-6 order-2 order-sxm-1">
+			<div class="article-text article-dark-grey-text">
+				@Model.Content.IntroCopy
+			</div>
+		</div>
+		<div class="col-sm-6 text-center order-1 order-sm-2">
+			<img alt="@Path.GetFileNameWithoutExtension(Model.Content.LastImage.Url).Replace("-", " ")" src="@Model.Content.LastImage.Url" class="article-image">
+		</div>
+	</div>
+</section>
+
+@*<!-- / Article -->
+<!-- Steps Gallery -->
+<section class="steps-gallery-container">
+	<div class="container-fluid">
+		<div class="row step-gallery-row">
+			@if (Model.Content.SystemSteps.Any())
+			{
+				var count = 0;
+				foreach (var steps in @Model.Content.SystemSteps)
+				{
+					count++;
+					var step = new SystemStepsNested(steps);
+					<!-- Step -->
+					<div class="col-12 col-sm-6 col-xl-4">
+						<div class="step-title-row">
+							<img src="/images/icons/@count-icon-step.png" class="step-icon" alt="Step @count icon" />
+							<h2 class="step-title section-text mid-blue-grey-text">@step.Title</h2>
+						</div>
+						<img src="@step.Image.Url" class="step-image" alt="Step  @count image" />
+						<div class="step-image-caption text-center article-dark-grey-text">@step.Copy</div>
+					</div>
+					<!-- / Step -->
+				}
+			}
+			<!-- Empty slot for image -->
+			<div class="col-12 col-sm-6 col-xl-4 d-none d-xl-block">
+				<img src="@Model.Content.LastImage.Url" class="empty-slot-image" alt="@Path.GetFileNameWithoutExtension(Model.Content.LastImage.Url).Replace("-", " ")" />
+			</div>
+			<!-- / Empty slot for image -->
+		</div>
+	</div>
+</section>
+<!-- / Steps Gallery -->*@
+<!-- Horizonatl box -->
+@if (Model.Content.Panel.Any())
+{
+	foreach (var panels in @Model.Content.Panel)
+	{
+		@Html.Partial("HorizontalBox", new HorizontalBox(panels));
+	}
+}
+<!-- /Horizonatl box -->

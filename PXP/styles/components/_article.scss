@@ -1,0 +1,355 @@
+.pb-3, .py-3 {
+  padding-bottom: .5rem !important;
+  @include mq(sm) {
+    padding-bottom: 1rem !important;
+  }
+}
+
+.pt-3, .py-3 {
+  padding-top: .5rem !important;
+  @include mq(sm) {
+    padding-top: 1rem !important;
+  }
+}
+
+.article {
+  padding-top: 1em;
+  padding-bottom: 2em;
+  @include mq(sm) {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  @include mq(md) {
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
+  @include mq(xl) {
+    padding-top: 4em;
+    padding-bottom: 4em;
+  }
+  .intro-text {
+    padding: 0 0 1em;
+    @include mq(sm) {
+      padding: 0 0 2em;
+    }
+    @include mq(md) {
+      padding: 1em 0 3em;
+    }
+    @include mq(lg) {
+      padding: 1em 0 4em;
+    }
+    @include mq(xl) {
+      padding: 1em 0 5em;
+    }
+  }
+  &:not(.article-images) {
+    .row {
+      .col-sm-6 {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.article-image {
+  width: 100%;
+  padding-bottom: 2em;
+}
+
+.article-text {
+  padding-top: 0;
+  padding-bottom: 1em;
+  .px-btn {
+    top: 1em;
+  }
+  @include mq(md) {
+    padding-right: 3em;
+    padding-left: 0;
+  }
+  @include mq(lg) {
+    padding-right: 4em;
+  }
+  @include mq(xl) {
+    padding-right: 6em;
+  }
+}
+
+.article-image-half {
+  .image-column {
+    background: $white;
+    @include spread-value(padding, 0, 3em);
+    img {
+      width: 100%;
+    }
+  }
+
+  p {
+    margin-bottom: 1em;
+    @include mq(md) {
+      margin-bottom: 0;
+    }
+    @include mq(lg) {
+      margin-bottom: 1em;
+    }
+  }
+  .article-image-half-text {
+    @include mq(lg) {
+      padding-right: 6em;
+    }
+  }
+  .article-image-half-title {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    @include mq(md) {
+      display: flex;
+      flex-direction: row;
+    }
+    @include mq(lg) {
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+    h3 {
+
+      @include mq(md) {
+        margin-left: 3em;
+      }
+      padding-bottom: 0;
+      margin-bottom: 0;
+      align-self: center;
+    }
+  }
+}
+
+.article-hr {
+  padding: 1.5em 0;
+  &.last-article-hr {
+    margin-bottom: 1em;
+    @include mq(sm) {
+      margin-bottom: 2em;
+    }
+    @include mq(md) {
+      margin-bottom: 3em;
+    }
+    @include mq(lg) {
+      margin-bottom: 4em;
+    }
+    @include mq(xl) {
+      margin-bottom: 6em;
+    }
+  }
+}
+
+.builders-article {
+  .overflow-img-container {
+    @include mq(xl) {
+      width: 130%;
+    }
+  }
+  .builders-list {
+    -webkit-margin-before: 2em;
+    -webkit-margin-after: 3em;
+    -webkit-padding-start: 1em;
+  }
+  img {
+    width: 100%;
+    margin-bottom: 3em;
+    @include mq(lg) {
+      margin-bottom: 2em;
+    }
+    @include mq(xl) {
+      margin-bottom: 0;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .left-image,
+  .right-image {
+    @include mq(xl) {
+      height: 18em;
+      object-fit: cover;
+    }
+  }
+
+  .bottom-image {
+    @include mq(xl) {
+      height: auto;
+    }
+  }
+
+  height: auto;
+
+  .find-out {
+    margin-bottom: .5em;
+  }
+
+  .right-image {
+    @include mq(xl) {
+      width: 49%;
+      margin-left: 1%;
+      float: left;
+    }
+  }
+
+  .left-image {
+    @include mq(xl) {
+      width: 49%;
+      margin-right: 1%;
+      float: left;
+    }
+  }
+
+  .bottom-image {
+    @include mq(xl) {
+      padding-top: 1em;
+    }
+  }
+}
+
+.article-card-container {
+  padding-top: 1em;
+  @include mq(sm) {
+    padding-top: 2em;
+  }
+  @include mq(lg) {
+    padding-top: 3em;
+  }
+  .article-card-row {
+    .article-text-container {
+      padding-left: 1em;
+    }
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+    &.article-card-row--left {
+      .first-column {
+        @include mq(sm) {
+          max-width: 48%;
+        }
+      }
+      .second-column {
+
+      }
+    }
+    &.article-card-row--right {
+      .first-column {
+        width: 100%;
+        @include mq(sm) {
+          max-width: 44.666667%;
+        }
+      }
+      .second-column {
+        @include mq(sm) {
+          margin-left: 13.666667%;
+        }
+      }
+      .article-text-container {
+        @include mq(sm) {
+          margin-right: 3em;
+        }
+        @include mq(md) {
+          margin-right: 5em;
+        }
+        @include mq(xl) {
+          margin-right: 11em;
+        }
+      }
+    }
+    .first-column {
+
+    }
+    .second-column {
+      padding-top: 1em;
+      padding-bottom: 1em;
+      @include mq(xl) {
+        padding-top: 7em;
+      }
+    }
+    .article-card-col {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .article-image {
+      padding-bottom: 0;
+    }
+    .article-text {
+      padding: 0;
+      margin-bottom: 2rem;
+      @include mq(md) {
+        margin-bottom: 3rem;
+      }
+      .section-header {
+
+      }
+      .px-btn {
+
+      }
+    }
+  }
+}
+
+$sm-height: 36em;
+$md-height: 40em;
+$lg-height: 52em;
+$xl-height: 62em;
+
+.article-images {
+  .article-text {
+    @include mq(xl) {
+      padding: 0;
+    }
+  }
+  .half-height-image--first {
+    @include mq(xl) {
+      margin-top: -2em;
+    }
+  }
+  .button-container {
+    margin-bottom: 5em;
+  }
+  .full-height-image {
+    object-fit: cover;
+    height: auto;
+    @include mq(sm) {
+      height: $sm-height;
+    }
+    @include mq(md) {
+      height: $md-height;
+    }
+    @include mq(lg) {
+      height: $lg-height;
+    }
+    @include mq(xl) {
+      height: $xl-height - 2em;
+    }
+  }
+  .half-height-image {
+    object-fit: cover;
+    height: auto;
+    @include mq(sm) {
+      height: $sm-height / 2;
+    }
+    @include mq(md) {
+      height: $md-height / 2;
+    }
+    @include mq(lg) {
+      height: $lg-height / 2;
+    }
+    @include mq(xl) {
+      height: $xl-height / 2;
+    }
+  }
+  .solo-image {
+    height: 100%;
+    object-fit: cover;
+  }
+  .article-images-title {
+    padding-bottom: 1em;
+    margin-bottom: 0;
+  }
+  .find-out-row  {
+    margin-top: 5em;
+  }
+}
+

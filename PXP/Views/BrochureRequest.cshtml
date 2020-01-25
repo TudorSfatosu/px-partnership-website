@@ -1,0 +1,64 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.BrochureRequest>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+
+@{
+    Layout = "Master.cshtml";
+}
+
+@section Scripts {
+    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/scripts/vendor/mvcfoolproof.unobtrusive.min.js"></script>
+}
+
+@Html.Partial("SimpleBanner", new BannerSimple(Model.Content));
+
+
+<!-- Brochure Form -->
+<section class="pxp-form" id="form">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-1 col-11 offset-sm-1 col-sm-6">
+                <div class="intro-text dark-blue-grey-text">
+                    @Model.Content.FormMessage
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid article-mid-grey-bg main-container">
+        <div class="row">
+            <div class="col-12 offset-sm-1 col-sm-6">
+                @if (TempData["success"] != null)
+                {
+                    if ((bool)TempData["success"] == true)
+                    {
+                        <div class="form-msg">
+                            <p class="success">Thank you, your brochure request has been sent to The PX Partnership.</p>
+                            @if (TempData["Message"] != null)
+                            {
+                                var MailchimpMessage = (MvcHtmlString)TempData["Message"];
+                                <div class="mail-list">
+                                    @MailchimpMessage
+                                </div>
+                            }
+                        </div>
+                    }
+                    else if ((bool)TempData["success"] == false)
+                    {
+                        <div class="form-msg">
+                            @Html.ValidationMessage("reCAPTCHA", new { @class = "text-danger" })
+                        </div>
+                    }
+                }
+                @Html.Action("BrochureRequest", "ContactForm")
+
+            </div>
+            <div class="col-12 col-sm-5 d-none d-sm-block">
+                <img src="@Model.Content.FormImage.Url" alt="@Path.GetFileNameWithoutExtension(Model.Content.FormImage.Url).Replace("-", " ")" class="pxp-image" />
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Brochure Form  -->

@@ -1,0 +1,138 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Home>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+@using System.IO;
+
+@{
+	Layout = "Master.cshtml";
+}
+
+@if (Model.Content.Slider.Any())
+{	
+	<section class="half-banner-mask carousel-banner white-text">
+		<div class="container-fluid slideshow-container">
+			@foreach (var slider in @Model.Content.Slider)
+			{
+				var slide = new HomeSlider(slider);
+				IEnumerable<ImageCropData> imagecrop = null;
+				string ImagePath = "";
+				string ImageWidth = "";
+				if (slide.Image != null)
+				{
+					var ImageProp = Umbraco.Media(@slide.Image.Id);
+					var UmbracoFile = ImageProp.UmbracoFile;
+					imagecrop = UmbracoFile.Crops;
+				}
+
+				<!-- Banner Slide 1 -->
+				<div class="row bannerSlides px-@slide.ThemeColors.Label px-@slide.ThemeColors.Label-border-bottom">
+					<div class="col-md-5 my-auto banner-text-container banner-text-container--outer order-2 order-md-1">
+						<div class="banner-text-container banner-text-container--inner">
+							<h2 class="article-images-title text-center article-dark-grey-text">
+								@slide.Title
+							</h2>
+							<div class="px-@slide.ThemeColors.Label-hr hr"></div>
+							<p class="section-text text-center article-dark-grey-text">
+								@slide.Copy
+							</p>
+							<a hreflang="en-gb" rel="canonical" href="@slide.Link.Url" class="px-@slide.ThemeColors.Label-btn large-px-btn px-btn">See More Info</a>
+						</div>
+					</div>
+
+					<picture>
+						@foreach (var image in imagecrop.OrderBy(x => x.Width))
+						{
+							ImagePath = slide.Image.GetCropUrl(image.Alias);
+							ImageWidth = image.Width.ToString() + "px";
+							<source media="(max-width: @ImageWidth)" srcset="@ImagePath">
+						}
+
+					</picture>
+					<div class="col-md-7 image order-1 order-md-2"
+						 style="background-image: url('/images/masks/white-mask.png'), url('@slide.Image.GetCropUrl("LgDesktop")&quality=80')">
+					</div>
+
+
+
+				</div>
+				<!-- / Banner Slide 1 -->
+			}
+		</div>
+	</section>
+}
+
+<!-- Banner Carousel controls -->
+<div class="slideshow-container">
+	<div class="row controls-row">
+		<div class="col-12 col-md-5 controls-column ">
+			<a class="prev" onclick="plusSlides(-1)">❮</a>
+
+			<div class="dot-container">
+				<span class="bannerDot" onclick="currentSlide(1)"></span>
+				<span class="bannerDot" onclick="currentSlide(2)"></span>
+				<span class="bannerDot" onclick="currentSlide(3)"></span>
+			</div>
+			<a class="next" onclick="plusSlides(1)">❯</a>
+		</div>
+	</div>
+</div>
+
+<!-- / Banner Carousel controls -->
+<!-- Builders Cards Large -->
+<!-- Builders Cards Large -->
+<section class="builders-cards builders-cards--large">
+	<div class="builders-cards-header text-center">
+		<div class="container ">
+			<div class="row builders-cards-header-row">
+				<h1 class="lightest-grey-text section-heading all-caps">
+					@Model.Content.CardsHeading
+				</h1>
+			</div>
+		</div>
+	</div>
+
+	@if (Model.Content.NavigationCards.Any())
+	{
+		var count = 0;
+		foreach (var navCards in @Model.Content.NavigationCards)
+		{
+			count++;
+			if (count % 2 == 1)
+			{
+				@: <div class="builders-cards-body"><div class="container"><div class="row"><div class="card-group">
+			}
+			var navCardLarge = new NavCardLarge(navCards);
+			<div class="card fold white-fold--top fold--medium fold--builders-card">
+				<div class="card-body card-body-head ">
+					<h5 class="card-title mid-blue-grey-text horiz-card-heading">@navCardLarge.Title</h5>
+				</div>
+				<img class="card-img-top" src="@navCardLarge.Image.Url"
+					 alt="@Path.GetFileNameWithoutExtension(@navCardLarge.Image.Url).Replace("-", " ")">
+				<div class="card-body card-text-container px-@navCardLarge.Colors.Label-border">
+					<p class="text">
+						@navCardLarge.Copy
+					</p>
+					<a hreflang="en-gb" rel="canonical" href="@navCardLarge.Link.Url" class="">
+						<div class="dark-blue-grey-text horiz-card-text card-info">See More Info</div>
+						<div class="card-btn card-btn-@navCardLarge.Colors.Label"></div>
+					</a>
+				</div>
+			</div>
+			if (count % 2 == 0)
+			{
+				@: </div></div></div></div>
+			}
+		}
+	}
+
+	
+</section>
+<!-- / Builders Cards Large -->
+
+@if (Model.Content.Panel.Any())
+{
+	foreach (var panels in @Model.Content.Panel)
+	{
+		@Html.Partial("HorizontalBox", new HorizontalBox(panels));
+	}
+}

@@ -1,0 +1,48 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Login>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Umbraco.Web.Models;
+
+@{
+	Layout = "SimpleMaster.cshtml";
+}
+
+<!-- Login Form -->
+<section class="login-form">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 offset-sm-4 col-sm-4">
+				<form action="">
+					<a hreflang="en-gb" rel="canonical" href="~/" class="back-button">
+						<div class="arrow-wrap">
+							<span class="arrow-part-1"></span>
+							<span class="arrow-part-2"></span>
+							<span class="arrow-part-3"></span>
+						</div>
+					</a>
+					<div class="imgcontainer">
+						<img src="/images/logos/px-logo-grey.png" alt="PX Partnership Logo" class="">
+
+						<div class="caption">Online Part Exchange System</div>
+					</div>
+					<div class="container">
+						<label for="uname"><b>Email</b></label>
+						<input id="uname" type="text" placeholder="" name="uname" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input id="psw" type="password" placeholder="" name="psw" required>
+
+						<button type="submit"
+								class="button button--aylen button--border-thick button--inverted button--text-upper button--size-s">
+							Login
+						</button>
+						<label>
+							<input type="checkbox" checked="checked" name="remember"> Remember me
+						</label>
+						<span class="psw"><a hreflang="en-gb" rel="canonical" href="#">Forgot your password?</a></span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Login Form  -->
